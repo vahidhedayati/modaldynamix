@@ -1,0 +1,70 @@
+<div class="modal fade" id="ModalDynamix${attrs.id}" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+    			<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">${attrs.close}</button>
+					<h3>${attrs.title }</h3>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<g:render template="${attrs.modalTemplatePage}"  model="[ccontroller: attrs.submitController, formId:attrs.formId]"/>
+					</div>
+				</div>
+		
+				
+		</div>
+	</div>
+</div>
+
+
+
+
+<g:javascript>
+
+	$('#${attrs.formId}').submit(function() {
+ 		$.ajax({ 
+        	data: $(this).serialize(), 
+        	type: $(this).attr('method'),
+        	url: $(this).attr('action'), 
+        	success: function(response) { 
+            	$('#${attrs.formId}').html(response);
+            	
+            	${attrs.submitController}CloseModal(); 
+        	}
+    	});
+    	return false; 
+	});		
+	
+	function ${attrs.submitController}CloseModal() {
+		$('#ModalDynamix${attrs.id}').dialog().dialog('close');
+  		$(".modal-backdrop").hide();
+  		
+  		// CKEDITOR specific call - oh what a pain
+    	if(CKEDITOR.instances['myCKEditor']){
+			CKEDITOR.remove(CKEDITOR.instances['myCKEditor']); //Does the same as line below
+			
+			// This does not work due to cloning - returns two boxes
+			//CKEDITOR.replace('myCKEditor');
+			// Instead were going to do a call to the page via controller
+
+			$.get('${createLink(controller:"${attrs.queryController }", action: "${attrs.queryAction}")}',function(data){
+				$('#${attrs.divId}1').hide().append(data);
+			});
+			
+   		}
+   		else{
+   			// Do the default action of returning cloned information
+   			$('#${attrs.divId}1').hide().append(myClone${attrs.divId});
+   		}
+   	
+  		<g:if test="${!attrs.disablecheck.equals('true') }">
+			var domain="${attrs.domain }";
+			var divId="${attrs.divId }";
+			var returnController="${attrs.returnController }";
+			$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain='+domain+'&divId='+divId+'&returnController='+returnController,function(data){
+			$('#${attrs.divId}').hide().html(data).fadeIn('slow');
+		});
+	</g:if>	
+	}
+
+</g:javascript>

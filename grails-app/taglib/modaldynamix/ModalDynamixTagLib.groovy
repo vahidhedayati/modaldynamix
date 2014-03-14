@@ -24,9 +24,13 @@ class ModalDynamixTagLib {
 		if (!attrs.formType) { 
 			attrs.formType='modalRemoteForm'
 		}	
-		
-		out << g.render(contextPath: pluginContextPath,template: '/modaldynamix/modalcreate', model: [attrs:attrs])
+		if (!attrs.close) {
+			attrs.close='X'
+		}
+		out << g.render(contextPath: pluginContextPath,template: attrs.modalTemplate, model: [attrs:attrs])
 		
 	}
+	
+
 	
 }

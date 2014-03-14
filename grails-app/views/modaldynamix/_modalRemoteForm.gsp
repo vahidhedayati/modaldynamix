@@ -5,8 +5,8 @@
 			<div class="message" role="status">${flash.message}</div>
 		</g:if>
 		<div class="modal-header">
-			<button type="button" class="close" data-dismiss="modal">x</button>
-			<h3>${title }</h3>
+			<button type="button" class="close" data-dismiss="modal">${attrs.close}</button>
+			<h3>${attrs.title }</h3>
 		</div>
 		<div class="form-group">
 			

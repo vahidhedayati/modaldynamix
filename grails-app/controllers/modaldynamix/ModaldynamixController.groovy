@@ -3,12 +3,12 @@ package modaldynamix
 import java.util.List;
 
 class ModaldynamixController {
-def contextPath
+
   def grailsApplication
-	def getAjaxCall(String domain,String divId) {
+	def getAjaxCall(String domain,String divId,String returnController) {
 		def returnResult= domainList(domain)
-		println "-------------"+grailsApplication?.metadata['app.name']
-		render(contextPath:"/"+grailsApplication?.metadata['app.name'] ,template: divId+'Display', model: [returnResult:returnResult,  divId: divId ])
+		[returnResult:returnResult,  divId: divId , returnController:returnController]
+		
 	}
 	
 	private List domainList(def domain) {

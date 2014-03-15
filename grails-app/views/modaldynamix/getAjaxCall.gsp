@@ -1,2 +1,2 @@
 
-<g:render template="/${returnController }/${divId}Display"/>
+<g:render template="/${returnController }/${divId}${templateType }"/>

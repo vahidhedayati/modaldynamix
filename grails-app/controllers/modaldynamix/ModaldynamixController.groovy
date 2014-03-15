@@ -5,9 +5,14 @@ import java.util.List;
 class ModaldynamixController {
 
   def grailsApplication
-	def getAjaxCall(String domain,String divId,String returnController) {
-		def returnResult= domainList(domain)
-		[returnResult:returnResult,  divId: divId , returnController:returnController]
+	def getAjaxCall(String domain,String divId,String returnController,String templateType) {
+		def returnResult
+		
+		if ((domain)&&(!domain.equals(''))){
+			returnResult= domainList(domain)
+		}
+		
+		[returnResult:returnResult,  divId: divId , returnController:returnController, templateType:templateType]
 		
 	}
 	

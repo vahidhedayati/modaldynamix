@@ -41,17 +41,6 @@ class ModalDynamixTagLib {
 
 	def modalForm={attrs,body ->
 		
-		// Set the form to load by default selfPosting form [OVERRIDABLE just set close="CLOSE" ]
-		// SHOULD BE OVERRIDEN TO DEFINE FORM TYPE:
-		// AVAILABLE:
-		// modalSelfPostForm - self posting form default requires a complete form to be provided as modalTemplate param below
-		// modalRemoteForm - A remote Form that requires more configuration such as form action controller +side: allows you to provide a fields only form.
-		// modalbasic - just a basic pop up that the user does something in and it self does what ever you want - nothing besides site opening it
-		// modaliframe - opens a modalbox with an iframe within it - a url is produced and sent to the iframe - you need to configure the url to display a form back 
-		
-		if (!attrs.formType) { 
-			attrs.formType='modalSelfPostForm'
-		}
 		
 		// Set the close button	[OVERRIDABLE just set close="CLOSE" ]
 		if (!attrs.close) {
@@ -83,7 +72,7 @@ class ModalDynamixTagLib {
 			attrs.queryAction="getAjaxCall"
 		}
 		
-		
+		/// Verification TODO
 			
 		out << g.render(contextPath: pluginContextPath,template: attrs.modalTemplate, model: [attrs:attrs])
 		

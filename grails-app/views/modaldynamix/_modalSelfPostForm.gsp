@@ -46,7 +46,12 @@
 			$('#${attrs.divId}1').hide().append(data);
 		});
   		
-   		
+   		<g:if test="${attrs.clearckeditor}">
+			if(CKEDITOR.instances["${attrs.clearckeditor }"]){
+				CKEDITOR.remove(CKEDITOR.instances["${attrs.clearckeditor }"]); //Does the same as line below
+			}
+		</g:if>
+			
   		// If disablecheck not set to true - the trigger queryController which is by default modaldynamix
   		// This calls getAjaxCall which lists the domain provided and sends it back to your original view       
 		<g:if test="${!attrs.disablecheck.equals('true') }">

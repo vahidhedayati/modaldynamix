@@ -19,14 +19,5 @@
 	</div>
 	</div>
 </div>
-		
-<script type="text/javascript">
-$(document).ready(function() {
- $('a').on('click', function(e) {
-	 alert(e);
-		e.preventDefault();
-		var url = $(this).attr('href');
-		$(".modal-body").html('<iframe width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="false" src="'+url+'"></iframe>');
-  });
-});
-</script>
+<g:render template="${attrs.modalJsTemplate}" model="[attrs:attrs]" />
+	

@@ -1,4 +1,4 @@
-<g:render template="${attrs.modalRemoteTemplate}" model="[attrs:attrs]" />
+
   				
 <g:javascript>
 
@@ -9,7 +9,14 @@
   		$(".modal-backdrop").hide();
   		var domain="${attrs.domain }";
 		var divId="${attrs.divId }";
-		var returnController="${attrs.returnController }";	
+		var returnController="${attrs.returnController }";
+			
+		<g:if test="${attrs.clearckeditor}">
+			if(CKEDITOR.instances["${attrs.clearckeditor }"]){
+				CKEDITOR.remove(CKEDITOR.instances["${attrs.clearckeditor }"]); //Does the same as line below
+			}
+		</g:if>	
+		
   		$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain=&templateType=Form&divId='+divId+'&returnController='+returnController,function(data){
 			$('#${attrs.divId}1').hide().append(data);
 		});

@@ -190,15 +190,17 @@ So lets take a look inside this file what is going on here?
 		
 		returnController -> The current controller calling this page and contains the templates for your main divs on the page
 		
-		modalTemplatePage ->a template within your local project that contains a complete form  
-		[_formSelfPost.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/myLocalDomain/_formSelfPost.gsp)
+		modalTemplatePage ->a template within your local project that contains a complete form
+		  
+[_formSelfPost.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/myLocalDomain/_formSelfPost.gsp)
 		
 		modalTemplate -> This is the template within the plugin to call must match the above name if you are using selfPost method, 
 		You can write your own and override the value
 		
 		domain -> Full path.domainName to access the domain that is in question or being updated, it simply does a listing and returns list 
 		on your final div call to the Display file as returnResult:
-		[_MySelfPostDivDisplay.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MySelfPostDivDisplay.gsp)
+		
+[_MySelfPostDivDisplay.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MySelfPostDivDisplay.gsp)
 		
 			from="${returnResult ?:.....
 		
@@ -246,18 +248,14 @@ value here and make this some template that opens up and then reuse the form by 
 
 
 
-For all the files related to selfposting:
+For all the files related to self posting example refer to:
 		
-		
-[_MySelfPostDivDisplay.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MySelfPostDivDisplay.gsp)		
-
-[_MySelfPostDivForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MySelfPostDivForm.gsp)
-
-[_formSelfPost.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/myLocalDomain/_formSelfPost.gsp)
+[testSelfPostForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/testSelfPostForm.gsp)		
+ [_MySelfPostDivDisplay.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MySelfPostDivDisplay.gsp)
+ [_MySelfPostDivForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MySelfPostDivForm.gsp)
+ [_formSelfPost.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/myLocalDomain/_formSelfPost.gsp)
 
 --> feel free to use this form template as your own template if you just require a self posting form
-
-The Display Page is your basic page.
 
 
 The real can with the worm is that DivIDForm.gsp page, the rest is quite straight forward
@@ -354,15 +352,17 @@ So lets take a look inside this file what is going on here?
 		
 		returnController -> The current controller calling this page and contains the templates for your main divs on the page
 		
-		modalTemplatePage ->a template within your local project that contains a complete form  
-		[_form.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views//myLocalDomain/_form.gsp)
+		modalTemplatePage ->a template within your local project that contains a complete form
+		  
+[_form.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views//myLocalDomain/_form.gsp)
 		
 		modalTemplate -> This is the template within the plugin to call must match the above name if you are using modalRemoteForm method, 
 		You can write your own and override the value
 		
 		domain -> Full path.domainName to access the domain that is in question or being updated, it simply does a listing and returns list 
 		on your final div call to the Display file as returnResult:
-		[_MyDivDisplay.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MyDivDisplay.gsp)
+		
+[_MyDivDisplay.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MyDivDisplay.gsp)
 		
 			from="${returnResult ?:.....
 		
@@ -390,4 +390,16 @@ It is just a simple select element with its tags etc. the only difference the fr
 
  
 
+For all the files related to RemotForm Call refer to:
+		
+		
+[testRemoteForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/testRemoteForm.gsp)
+ [_MyDivDisplay.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MyDivDisplay.gsp)
+ [_MyDivForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MyDivForm.gsp)
+ [_form.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/myLocalDomain/_form.gsp)
+
+--> feel free to use this form template as your own template if you just require a remote form functionality to your existing form
+
+
+The real can with the worm is that DivIDForm.gsp page, the rest is quite straight forward
 		

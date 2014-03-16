@@ -322,7 +322,7 @@ class ModalDynamixTagLib {
 			attrs.iAction="getiTemplate"
 		}
 		
-		if (!attrs.ur) {
+		if (!attrs.url) {
 			def g = new org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib()
 			attrs.url=g.createLink(controller: ''+attrs.iController+'', action: ''+attrs.iAction+'', params:attrs, ,  absolute: 'true')
 		}	

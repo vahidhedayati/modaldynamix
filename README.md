@@ -362,7 +362,7 @@ So lets take a look inside this file what is going on here?
 		submitController -> The controller that will process your form being called by RemoteForm 
 	  	submitAction	-> The action from this controller
 	  	submitValue 	-> The value to show in the submit value of the RemoteForm
-  
+ 				 
 
 ### MyDiv our Final Div
 This is within our main form on this page and contains a render template to /testdynamix/MDivDisplay.
@@ -490,7 +490,7 @@ So lets take a look inside this file what is going on here?
 		
 		modalTemplatePage ->a template within your local project that contains a complete form
 		  
-[_form-IFRAME.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views//myLocalDomain/_form-IFRAME.gsp)
+[_form-IFRAME.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/myLocalDomain/_form-IFRAME.gsp)
 		
 		modalTemplate -> This is the template within the plugin to call must match the above name if you are using modalRemoteForm method, 
 		You can write your own and override the value
@@ -506,6 +506,14 @@ So lets take a look inside this file what is going on here?
 		submitController -> The controller that will process your form being called by iFrame 
 	  	submitAction	-> The action from this controller
 	  	submitValue 	-> The value to show in the submit value of the RemoteForm
+
+ Finally:
+ 	
+ 		url -> you can set url="http://yoururl.to.your.form/controller/call_to_get_form
+ 		
+By default it will take your templatepage myLocalDomain/_form-IFRAME.gsp and get it via a plugin
+ call to render the template. This may cause issues and for this you can just define url="likeabove"
+ 		
   
 
 ### MyIframeDiv our Final Div

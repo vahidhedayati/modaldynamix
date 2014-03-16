@@ -204,6 +204,22 @@ So lets take a look inside this file what is going on here?
 	  	  
 		  
 
+### MySelfPostDiv our Final Div
+This is within our main form on this page and contains a render template to /testdynamix/MySelfPostDivDisplay.
+
+So image you have your form to make this work, you take out the segment in the form that is to be updated and put it in its own templatefile, the naming as above all match the DivId name given to the form and ends with Display
+
+What is in this file?
+
+https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MySelfPostDivDisplay.gsp		
+
+		<label>Field2: auto updated</label>		
+ 			<g:select from="${returnResult ?: grails.modaldx.test.MyLocalDomain.list()}" id="myfield" name="mynextfield"/>
+ 		</div>
+
+Oh thank goodness its just a simple select element with its tags etc. the only difference the from value has been ammended to include returnResult :? and rest as was...
+
+
 
 
 #### g:modalForm flexibility 
@@ -220,7 +236,9 @@ https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/view
 	  submitValue="Save Modal Form and update existing form no refreshing"
 
 
-The above could be added and the form in question then referes to them, possibilities are endless you could add a further value here and make this some template that opens up and then reuse the form by adding all of the above plus a tweaked new value that opens up this template.
+The above could be added and the form in question then refers to them, possibilities are endless you could add a further value here and make this some template that opens up and then reuse the form by adding all of the above plus a tweaked new value that opens up this template.
+
+
 
 
 
@@ -236,6 +254,14 @@ https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/view
 --> feel free to use this form template as your own template if you just require a self posting form
 
 The Display Page is your basic page.
+
+
+The real can with the worm is that DivIDForm.gsp page, the rest is quite straight forward
+
+
+
+
+
 
 
 

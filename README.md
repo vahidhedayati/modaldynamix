@@ -544,5 +544,17 @@ For all the files related to RemotForm Call refer to:
 
 --> feel free to use this form template as your own template if you just require a Iframe form functionality to your existing form
 
+If you inspect the form pages from all the types of calls this the myLocalDomain/_form files you will notice all use 
+
+	attrs 
+	
+besides iframe form which uses 
+
+	params
+	
+A heads up to watch for this when putting your forms together.
+
+
+I have updated  [_MySelfPostDivForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MySelfPostDivForm.gsp) to display the results as updating check boxes rather than updating a select box
 
 		

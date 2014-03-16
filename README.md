@@ -42,6 +42,7 @@ You will notice from a default installed application the extra jquery jquery-ui 
 If your site is already bootstrapped then no need to load that up.
 
 
+Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-test) to see this being used and where all the below examples were taken from.
 
 ### With above in place here are some examples on how to use this plugin:
 

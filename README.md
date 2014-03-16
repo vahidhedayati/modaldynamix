@@ -157,22 +157,24 @@ The reason is that the plugin later on calls this page to store its content for 
 https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MySelfPostDivForm.gsp
 
 So lets take a look inside this file what is going on here?
-<g:modalForm
- 
-  id="ModalDynamixSELFPOST"
-  formId="MyForm"
- 
-  title="My Modal Title"
 
-  divId="MySelfPostDiv"
-  returnController="testdynamix"
- 
- 
-  modalTemplatePage="/myLocalDomain/formSelfPost"
-  modalTemplate='/modaldynamix/modalSelfPostForm'
- 
-  domain="grails.modaldx.test.MyLocalDomain"
-  />
+
+	<g:modalForm
+	 
+	  id="ModalDynamixSELFPOST"
+	  formId="MyForm"
+	 
+	  title="My Modal Title"
+	
+	  divId="MySelfPostDiv"
+	  returnController="testdynamix"
+	 
+	 
+	  modalTemplatePage="/myLocalDomain/formSelfPost"
+	  modalTemplate='/modaldynamix/modalSelfPostForm'
+	 
+	  domain="grails.modaldx.test.MyLocalDomain"
+	  />
 
 
 #### g:modalForm
@@ -212,10 +214,10 @@ https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/view
 
 https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/myLocalDomain/_formSelfPost-morefields.gsp
 
-
-  submitController="MyLocalDomain"
-  submitAction="save"
-  submitValue="Save Modal Form and update existing form no refreshing"
+	
+	  submitController="MyLocalDomain"
+	  submitAction="save"
+	  submitValue="Save Modal Form and update existing form no refreshing"
 
 
 The above could be added and the form in question then referes to them, possibilities are endless you could add a further value here and make this some template that opens up and then reuse the form by adding all of the above plus a tweaked new value that opens up this template.

@@ -20,24 +20,57 @@ class ModalDynamixTagLib {
 	}
 	
 	
-	def showTopScript= {attrs,body->
-		
+	def genModalButton= { attrs,body->
+			
+		/*
+		 * This is the DivId that is defined further below on the main page
+		 * must match that ID otherwise things won't work
+		 * 
+		 */
 		if (!attrs.divId) {
-			throwTagError("Tag [loadShowScript] is missing required attribute [divId]")
+			throwTagError("Tag [genModalButton] is missing required attribute [divId]")
+		}
+
+
+		/*
+		 * This ID must match the ID of your DIV calls further down on the main page declaring these tags
+		 * 
+		 */
+		if (!attrs.id) {
+			throwTagError("Tag [genModalButton] is missing required attribute [id]")
 		}
 		
-		if (!attrs.scriptName) {
-			throwTagError("Tag [loadShowScript] is missing required attribute [scriptName]")
+		/*
+		 * title - sets the title of the modalbox link when hovering
+		 * defaults to SET HOVER TITLE
+		 */
+		if (!attrs.title) {
+			attrs.title='SET HOVER TITLE'
 		}
 		
+		/*
+		 * 
+		 * This is the button value or tag explaining the button link
+		 * Defaults to CLICK ME 
+		 */
+		if (!attrs.value) {
+			
+			attrs.value='CLICK ME'
+		}
 		out << """
+			<button href="#${attrs.id}" class="btn btn-block btn-success" 
+		role="button" data-toggle="modal"  onclick="run${attrs.id}()" title="${attrs.title}">
+ 		${attrs.value}</button>
+
 			<script type="text/javascript">
- 	 		function ${attrs.scriptName}() {
+ 	 		function run${attrs.id}() {
  	 	 		\$('#${attrs.divId}').show();
  	 		}
  	 	    </script>
            """
+		
 	}
+	
 
 	def modalForm={attrs,body ->
 		

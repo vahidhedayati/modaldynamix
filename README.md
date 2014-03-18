@@ -111,7 +111,7 @@ please refer to iframe example for this feature.
 
 
 	<g:genModalButton
-		id="ModalDynamixSPECIALFORM"
+		id="ModalDynamixSELFPOST"
 		divId="MySelfPostDiv1"
 		title="Create New MyUser"
 		value="Generate New MyUser?"

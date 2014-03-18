@@ -8,9 +8,6 @@ A common problem when it comes to forms within a website is having the ability t
 This plugin aims to help in the process of producing dynamic forms that sit on top of other forms that are then opened in a pop up modalbox and their 
 actions update your underlying form without refreshing actual page.
 
-
-# Not released as yet !
-
 ## Installation:
 Add plugin Dependency :
 

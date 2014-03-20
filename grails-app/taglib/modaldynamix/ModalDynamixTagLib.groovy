@@ -23,6 +23,24 @@ class ModalDynamixTagLib {
 	
 	
 	/*
+	 * g:loadATemplate
+	 * <g:loadATemplate fromPlugin="PLUGIN CONTAINING TEMPLATE" template="/path/to/and/call/template.gsp" 
+	 * anything else just add it in those 2 are required
+	 *  />
+
+	 *	required:
+	 *	fromPlugin="Plugin to call from" //can be left blank not tried for any results
+	 *	template="as above"
+	 *	
+	 */
+	
+	def loadATemplate= { attrs,body->
+		if (attrs.template&&attrs.fromPlugin) {
+			out << g.render(plugin: attrs.fromPlugin,template: attrs.template, model:[params:attrs])
+		}
+	}
+	
+	/*
 	 * g:getModalButton
 	 * <g:getModalButton divId="something" id="MATCHIDSETFOR_modalForm_BELOW"  title="hover title" value="click my button"/> 
 	 * 

@@ -1,17 +1,21 @@
-
-<div class="modal fade" id="${attrs.id}" role="dialog">
-	<div class="modal-dialog">
-		<div class="modal-content">
-    			<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal">${attrs.close}</button>
-					<h3>${attrs.title }</h3>
-				</div>
-				<div class="modal-body">
-					<div class="form-group">
-						<g:render template="${attrs.modalTemplatePage}" model="[attrs:attrs]"/>
-					</div>
-				</div>
+<div class='modal fade' id="${attrs.id }" tabindex='-1' role='dialog' aria-labelledby="${attrs.id}Label" aria-hidden='true'>
+	 <div class="modal-dialog${attrs.id }" style="width:100%;height:100%; ">
+      <div class="modal-content">
+		<div class='modal-header'>
+			<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
+			<div id='myModalLabel'><h3>${attrs?.title}</h3></div>
 		</div>
+		<div class="modal-body" >
+			<div class="form-group">
+				<g:if test="${attrs.fromPlugin }">
+					<g:loadATemplate fromPlugin="${attrs.fromPlugin }" template="${attrs.modalTemplatePage }"/>
+				</g:if>
+				<g:else>
+					<g:render template="${attrs.modalTemplatePage}" model="[attrs:attrs]"/>
+				</g:else>
+			</div>
+		</div>
+	</div>
 	</div>
 </div>
 
@@ -36,13 +40,15 @@
 
 	//CloseModal Closes specific 
 	function ${attrs.formId}CloseModal() {
+	
 		//Close modal window and remove backdrop
 		$('#${attrs.id}').dialog().dialog('close');
   		$(".modal-backdrop").hide();
   		var domain="${attrs.domain }";
 		var divId="${attrs.divId }";
+		var fromPlugin="${attrs.fromPlugin }";
 		var returnController="${attrs.returnController }";	
-  		$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain=&templateType=Form&divId='+divId+'&returnController='+returnController,function(data){
+  		$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain=&templateType=Form&fromPlugin='+fromPlugin+'&divId='+divId+'&returnController='+returnController,function(data){
 			$('#${attrs.divId}1').hide().append(data);
 		});
   		
@@ -56,7 +62,7 @@
   		// This calls getAjaxCall which lists the domain provided and sends it back to your original view       
 		<g:if test="${!attrs.disablecheck.equals('true') }">
 			var returnController="${attrs.returnController }";
-			$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain='+domain+'&templateType=Display&divId='+divId+'&returnController='+returnController,function(data){
+			$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain='+domain+'&fromPlugin='+fromPlugin+'&templateType=Display&divId='+divId+'&returnController='+returnController,function(data){
 				$('#${attrs.divId}').hide().html(data).fadeIn('slow');
 			});
 		</g:if>	

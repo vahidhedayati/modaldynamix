@@ -1,4 +1,4 @@
-modaldynamix 0.1
+modaldynamix 0.2
 =======================
 
 
@@ -11,7 +11,7 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 
-	compile ":modaldynamix:0.1" 
+	compile ":modaldynamix:0.2" 
 
 Or via grails command line:
 
@@ -43,6 +43,15 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 
 ### With above in place here are some examples on how to use this plugin:
 
+## Version info
+
+0.2 Issues with templates from within plugins, new fields fromPlugin="template_from_within_plugin" added 
+0.1 Release
+
+# Real life examples 
+try out [mailinglist|http://grails.org/plugin/mailinglist]  Installing this plugin into an existing project, then once instructions followed the buttons within contactclients.gsp are all driven by this plugin.
+There are upload file CSV, create template using Ckeditor and standard form update via remote form examples provided. Results displayed to end project via the plugin so the example DivIDFORM pages all have extra fromPlugin field defined.
+ 
 
 # Example 1: Basic modalbox form
  

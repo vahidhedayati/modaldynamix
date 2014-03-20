@@ -6,19 +6,18 @@ class ModaldynamixController {
 
   def grailsApplication
   
-
   /*
    * Controller Action: getTemplate
    * 
    * This gets a domainListing of provided domain and produces the display and Form pages within plugin call
    *   	
    */
-  def getTemplate(String domain,String divId,String returnController,String templateType) {
+  def getTemplate(String domain,String divId,String returnController,String templateType,String fromPlugin) {
 	  def returnResult
 	  if ((domain)&&(!domain.equals(''))){
 		  returnResult= domainList(domain)
 	  }
-	  [returnResult:returnResult,  divId: divId , returnController:returnController, templateType:templateType]
+	  [returnResult:returnResult,  divId: divId , returnController:returnController, templateType:templateType,fromPlugin:fromPlugin]
   }
 	
   /*
@@ -27,8 +26,8 @@ class ModaldynamixController {
    * Simply makes a call back to your own application to load up a form for iframe calls
    *  
    */
-  def getiTemplate(String modalTemplatePage) {
-	  [modalTemplatePage:modalTemplatePage]
+  def getiTemplate(String modalTemplatePage,String fromPlugin) {
+	  [modalTemplatePage:modalTemplatePage,fromPlugin:fromPlugin]
   }
 	
   /*

@@ -1,6 +1,6 @@
 
 	<button href="#${attrs.id}" 
-		class="btn btn-block btn-success" 
+		class="btn btn-success" 
 		role="button" data-toggle="modal"  
 		onclick="run${attrs.id}()" 
 		title="${attrs.title}">

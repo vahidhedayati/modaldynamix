@@ -10,13 +10,9 @@ actions update your underlying form without refreshing actual page.
 
 ## Installation:
 Add plugin Dependency :
-
+```groovy
 	compile ":modaldynamix:0.2" 
-
-Or via grails command line:
-
-	grails install-plugin modaldynamix
-
+```
 
 
 ## Getting started
@@ -25,7 +21,7 @@ Or via grails command line:
 
 your layouts main.gsp: (add jquery-ui,jquery + loadbootstrap)
 
-
+```gsp
 		<g:layoutHead/>
 		<g:javascript library="application"/>
 		<g:javascript library="jquery"/>
@@ -33,7 +29,8 @@ your layouts main.gsp: (add jquery-ui,jquery + loadbootstrap)
 		<r:layoutResources />
 		<g:loadbootstrap/>		
 	</head>
-	
+```
+
 You will notice from a default installed application the extra jquery jquery-ui and <g:loadbootstrap/>		
 
 If your site is already bootstrapped then no need to load that up.
@@ -44,9 +41,10 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 ### With above in place here are some examples on how to use this plugin:
 
 ## Version info
-
+```
 0.2 Issues with templates from within plugins, new fields fromPlugin="template_from_within_plugin" added 
 0.1 Release
+```
 
 # Real life examples 
 try out [mailinglist|http://grails.org/plugin/mailinglist]  Installing this plugin into an existing project, then once instructions followed the buttons within contactclients.gsp are all driven by this plugin.
@@ -58,7 +56,7 @@ There are upload file CSV, create template using Ckeditor and standard form upda
 ###### Opens a pop up modalbox form (your own local one) and upon submission the results refresh main page calling the form
 
 [testBasicForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/testBasicForm.gsp)
-
+```gsp
 		<g:genModalButton
 		id="ModalDynamixBASIC"
 		divId="MyBasicDiv1"
@@ -77,26 +75,27 @@ There are upload file CSV, create template using Ckeditor and standard form upda
 		
 		  SOME HTML PAGE............<br/>
 		  
+```
 
 So what is going on above?
 
 ##### g:genModalButton 
 loads up a button that triggers modalbox
-
+```
 		ID -> must match the ID of the id set further within the DIVS templates
 		divId -> This is the divId put above your main form that contains the modalbox itself and the form within it
 		title -> hover title of your new button
 		value -> display text in the button
-		
+```		
 			
 #### g:modalForm
 Main DIV wrapping the call  'MyBasicDiv1'  [ the name must match divId label above (usually) in this case of a basic call maybe not ] 
-
+```
 		-> ID	Must match above href
 		-> modalTemplate This must be left as is or overriden -	this loads up basic modal wrapper
 		-> modalTemplatePage This is the path to where your TEMPLATE file is which contains the form that is being called. 
 		
-
+```
 [_formBasic.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/myLocalDomain/_formBasic.gsp)
 
 --> feel free to use this form template as your own template if you just require a basic call
@@ -118,7 +117,7 @@ form of display was being used for that form element. Since that is actually set
 This should be good for all sorts of form actions including ckeditor items within pop up form. It will not be good for FILE UPLOADS - 
 please refer to iframe example for this feature.
 
-
+```gsp
 	<g:genModalButton
 		id="ModalDynamixSELFPOST"
 		divId="MySelfPostDiv1"
@@ -139,19 +138,19 @@ please refer to iframe example for this feature.
 	  	</div>
 	  	
 	  </g:form>
-  
+```  
  
 
 So what is going on above?
 
 ##### g:genModalButton 
 loads up a button that triggers modalbox
-
+```
 		ID -> must match the ID of the id set further within the DIVS templates
 		divId -> This is the divId put above your main form that contains the modalbox itself and the form within it
 		title -> hover title of your new button
 		value -> display text in the button
-		
+```		
 			
 #### MySelfPostDiv1
 Main DIV wrapping the call  'MySelfPostDiv1'  [ the name must match divId label below in g:genModalButton call ] 
@@ -162,7 +161,7 @@ The reason is that the plugin later on calls this page to store its content for 
 
 So lets take a look inside this file what is going on here?
 
-
+```gsp
 	<g:modalForm
 	 
 	  id="ModalDynamixSELFPOST"
@@ -179,10 +178,10 @@ So lets take a look inside this file what is going on here?
 	 
 	  domain="grails.modaldx.test.MyLocalDomain"
 	  />
-
+```
 
 #### g:modalForm
-
+```
 		id -> must match the ID of the id set further within the DIVS templates
 		
 		formId -> must be the name you wish to give your actual form must be unique
@@ -207,7 +206,7 @@ So lets take a look inside this file what is going on here?
 		
 			from="${returnResult ?:.....
 		
-	  	  
+```	  	  
 		  
 
 ### MySelfPostDiv our Final Div
@@ -238,11 +237,11 @@ the main page doing the calls:
 
 [_formSelfPost-morefields.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/myLocalDomain/_formSelfPost-morefields.gsp)
 
-	
+```	
 	  submitController="MyLocalDomain"
 	  submitAction="save"
 	  submitValue="Save Modal Form and update existing form no refreshing"
-
+```
 
 The above could be added and the form in question then refers to them, possibilities are endless you could add a further 
 value here and make this some template that opens up and then reuse the form by adding all of the above plus a tweaked new value that opens up this template.
@@ -275,7 +274,7 @@ fields within the g:modalForm tag as you will see in this example.
 This should be good for all sorts of form actions including ckeditor items within pop up form. It will not be good for FILE UPLOADS -
  please refer to iframe example for this feature.
  
-
+```gsp
 		<g:genModalButton
 		id="ModalDynamixSPECIALFORM"
 		divId="MyDiv1"
@@ -296,16 +295,15 @@ This should be good for all sorts of form actions including ckeditor items withi
 	  	</div>
 	
 	  	</g:form>
-   
-
+```
 ##### g:genModalButton 
 loads up a button that triggers modalbox
-
+```
 		ID -> must match the ID of the id set further within the DIVS templates
 		divId -> This is the divId put above your main form that contains the modalbox itself and the form within it
 		title -> hover title of your new button
 		value -> display text in the button
-		
+```		
 		
 
 	
@@ -317,7 +315,7 @@ The reason is that the plugin later on calls this page to store its content for 
 [_MyDivForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MyDivForm.gsp)
 
 So lets take a look inside this file what is going on here?
-
+```gsp
 	<g:modalForm
 	  id="ModalDynamixSPECIALFORM"
 	  formId="MyRemoteForma"
@@ -336,10 +334,10 @@ So lets take a look inside this file what is going on here?
 	
 	 
 	  />
-
+```
 
 #### g:modalForm
-
+```
 		id -> must match the ID of the id set further within the DIVS templates
 		
 		formId -> must be the name you wish to give your actual form must be unique
@@ -369,6 +367,7 @@ So lets take a look inside this file what is going on here?
 	  	submitAction	-> The action from this controller
 	  	submitValue 	-> The value to show in the submit value of the RemoteForm
  				 
+```
 
 ### MyDiv our Final Div
 This is within our main form on this page and contains a render template to /testdynamix/MDivDisplay.
@@ -415,7 +414,7 @@ When the user clicks close on top/bottom of the modal box, closeModal java scrip
 
 This should be good for all sorts of form actions including ckeditor items within pop up form. It will not be good for FILE UPLOADS -
  please refer to iframe example for this feature.
- 
+```gsp 
 	<g:genModalButton 
 		id="ModalDynamixSPECIALFORM"
 		divId="MyIframeDiv1"
@@ -435,17 +434,17 @@ This should be good for all sorts of form actions including ckeditor items withi
  			<g:render template='/testdynamix/MyIframeDivDisplay' />
  		</div>
   	</g:form>
-   
+```   
 
 ##### g:genModalButton 
 loads up a button that triggers modalbox
-
+```
 		ID -> must match the ID of the id set further within the DIVS templates
 		divId -> This is the divId put above your main form that contains the modalbox itself and the form within it
 		title -> hover title of your new button
 		value -> display text in the button
 		
-		
+```		
 
 	
 #### MyIframeDiv1
@@ -456,7 +455,7 @@ The reason is that the plugin later on calls this page to store its content for 
 [_MyIframeDivForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MyIframeDivForm.gsp)
 
 So lets take a look inside this file what is going on here?
-
+```gsp
 	<g:modalForm
  		id="ModalDynamixSPECIALFORM"
  		formId="MyRemoteForma"
@@ -481,9 +480,10 @@ So lets take a look inside this file what is going on here?
 
  			
  	/>
+```
 
 #### g:modalForm
-
+```
 		id -> must match the ID of the id set further within the DIVS templates
 		
 		formId -> must be the name you wish to give your actual form must be unique
@@ -503,8 +503,11 @@ So lets take a look inside this file what is going on here?
 		
 		domain -> Full path.domainName to access the domain that is in question or being updated, it simply does a listing and returns list 
 		on your final div call to the Display file as returnResult:
-		
+```
+
 [_MyIframeDivDisplay.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/_MyIframeDivDisplay.gsp)
+
+```
 		
 			from="${returnResult ?:.....
 		
@@ -512,6 +515,7 @@ So lets take a look inside this file what is going on here?
 		submitController -> The controller that will process your form being called by iFrame 
 	  	submitAction	-> The action from this controller
 	  	submitValue 	-> The value to show in the submit value of the RemoteForm
+```
 
  Finally:
  	

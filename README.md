@@ -1,4 +1,4 @@
-modaldynamix 0.2
+modaldynamix 0.3
 =======================
 
 
@@ -11,7 +11,7 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.2" 
+	compile ":modaldynamix:0.3" 
 ```
 
 
@@ -42,6 +42,7 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 
 ## Version info
 ```
+0.3 btn-block removed from button generation
 0.2 Issues with templates from within plugins, new fields fromPlugin="template_from_within_plugin" added 
 0.1 Release
 ```

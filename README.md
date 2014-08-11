@@ -1,4 +1,4 @@
-modaldynamix 0.3
+modaldynamix 0.4
 =======================
 
 
@@ -11,7 +11,7 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.3" 
+	compile ":modaldynamix:0.4" 
 ```
 
 

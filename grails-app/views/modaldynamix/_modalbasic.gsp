@@ -1,3 +1,7 @@
+<g:if test="${request.xhr }">
+			<meta name='layout' content="modaldynamix"/>
+</g:if>	
+		
 <div class="modal fade" id="${attrs.id}" role="dialog">
 	<div class="modal-dialog">
 		<div class="modal-content">

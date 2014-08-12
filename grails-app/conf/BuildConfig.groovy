@@ -13,8 +13,8 @@ grails.project.dependency.resolution = {
 	}
 
 	plugins {
-		runtime ":jquery:1.11.1"
-		compile ":jquery-ui:1.10.3"
+		//runtime ":jquery:1.11.1"
+		//compile ":jquery-ui:1.10.3"
 		build ':release:3.0.1', ':rest-client-builder:1.0.3', {
 			export = false
 		}

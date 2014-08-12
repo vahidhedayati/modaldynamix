@@ -1,7 +1,9 @@
 package modaldynamix
 
 class ModalDynamixTagLib {
-  
+	
+	def grailsApplication
+	
 	/*
 	 * This loads in customised bootstrap.css and default bootstrap.js
 	 * If your site already has these then no need to run, otherwise: 
@@ -16,30 +18,35 @@ class ModalDynamixTagLib {
 	 *
 	 * <g:loadbootrap/> 
 	 */
-	 
+
 	def loadbootstrap= {
-		out << g.render(contextPath: pluginContextPath,template: 'loadbootstrap')
+		def gver=grailsApplication.metadata['app.grails.version']
+		double verify=getGrailsVersion(gver)
+		def gfolder="resources"
+		if (verify >= 2.4 ) {
+			gfolder="assets"
+		}
+		out << g.render(contextPath: pluginContextPath,template: 'loadbootstrap' , model:[gfolder:gfolder])
 	}
-	
-	
+
+
 	/*
 	 * g:loadATemplate
 	 * <g:loadATemplate fromPlugin="PLUGIN CONTAINING TEMPLATE" template="/path/to/and/call/template.gsp" 
 	 * anything else just add it in those 2 are required
 	 *  />
-
 	 *	required:
 	 *	fromPlugin="Plugin to call from" //can be left blank not tried for any results
 	 *	template="as above"
 	 *	
 	 */
-	
+
 	def loadATemplate= { attrs,body->
 		if (attrs.template&&attrs.fromPlugin) {
 			out << g.render(plugin: attrs.fromPlugin,template: attrs.template, model:[params:attrs])
 		}
 	}
-	
+
 	/*
 	 * g:getModalButton
 	 * <g:getModalButton divId="something" id="MATCHIDSETFOR_modalForm_BELOW"  title="hover title" value="click my button"/> 
@@ -48,7 +55,7 @@ class ModalDynamixTagLib {
 	 * 
 	 */
 	def genModalButton= { attrs,body->
-			
+
 		/*
 		 * This is the DivId that is defined further below on the main page
 		 * must match that ID otherwise things won't work
@@ -66,7 +73,7 @@ class ModalDynamixTagLib {
 		if (!attrs.id) {
 			throwTagError("Tag [genModalButton] is missing required attribute [id]")
 		}
-		
+
 		/*
 		 * title - sets the title of the modalbox link when hovering
 		 * defaults to SET HOVER TITLE
@@ -74,23 +81,38 @@ class ModalDynamixTagLib {
 		if (!attrs.title) {
 			attrs.title='SET HOVER TITLE'
 		}
-		
+
 		/*
 		 * 
 		 * This is the button value or tag explaining the button link
 		 * Defaults to CLICK ME 
 		 */
 		if (!attrs.value) {
-			
 			attrs.value='CLICK ME'
+		}
+
+		/*
+		 * set class for button by default show bootstrap success i.e. green button
+		 * set 
+		 * style="btn btn-primary" this is blue
+		 * btn-danger = red
+		 * btn-warning = amber
+		 * btn-xs = extra small 
+		 * btn-lg = large button
+		 * btn-block = a large width of page buttton
+		 * pull-right = pull right 
+		 * * you can use a variety toget and set style of your button
+		 */
+		if (!attrs.style) {
+			attrs.style='btn btn-success'
 		}
 
 		out << g.render(contextPath: pluginContextPath,template: 'loadmodalbutton', model:[attrs:attrs])
 	}
-	
 
-	
-	
+
+
+
 	/*
 	 * modalForm call 
 	 * ==========================
@@ -101,18 +123,18 @@ class ModalDynamixTagLib {
 	 * 
 	 */
 	def modalForm={attrs,body ->
-		
+
 		/*
 		 * Attribute: close
 		 * 
 		 * This simply sets the close button value if not defined it defaults to X
 		 * 
 		 */
-		
+
 		if (!attrs.close) {
 			attrs.close='X'
 		}
-		
+
 		/*
 		 *  Attribute: ModalTemplate
 		 *
@@ -133,8 +155,8 @@ class ModalDynamixTagLib {
 		if (!attrs.modalTemplate) {
 			throwTagError("Tag [modalForm] is missing required attribute [modalTemplate]")
 		}
-		
-		
+
+
 		/*
 		 *  Attribute: ModalTemplatePage
 		 *
@@ -167,11 +189,11 @@ class ModalDynamixTagLib {
 		 * Just remember this is a template provided by your own application
 		 *
 		 */
-		
+
 		if (!attrs.modalTemplatePage) {
 			throwTagError("Tag [modalForm] is missing required attribute [modalTemplate]")
 		}
-		
+
 		/*
 		 * Attribute: id
 		 * This must be set to be the same value as defined in genModalButton: Id
@@ -179,33 +201,33 @@ class ModalDynamixTagLib {
 		if (!attrs.id) {
 			throwTagError("Tag [modalForm] is missing required attribute [id] (must be set to be the same value as defined in genModalButton: Id)")
 		}
-		
-		
-		
-		
-		
+
+
+
+
+
 		// Specific checks for modalRemoteForm call within plugin:
 		if (attrs.modalTemplate.equals('/modaldynamix/modalRemoteForm')) {
 			VerifyRemoteFormAttrs(attrs)
 		}
-		
+
 		// Specific configuration + checks for modaliframe call within plugin:
 		if (attrs.modalTemplate.equals('/modaldynamix/modaliframe')) {
 			verifyIframe(attrs)
-		}	
-		
+		}
+
 		// Specific configuration + checks for modalSelfPostForm call within plugin:
 		if (attrs.modalTemplate.equals('/modaldynamix/modalSelfPostForm')) {
 			verifyGeneral(attrs)
 		}
-		
+
 		out << g.render(contextPath: pluginContextPath,template: attrs.modalTemplate, model: [attrs:attrs])
-		
+
 	}
-	
-	
+
+
 	private void verifyGeneral(attrs) {
-		
+
 		/*
 		 * Attribute: divId
 		 * This is the div id value that contains your calls below, so its pure name
@@ -213,7 +235,7 @@ class ModalDynamixTagLib {
 		if (!attrs.divId) {
 			throwTagError("Tag [modalForm] is missing required attribute [divId] ( div id value that contains your calls below")
 		}
-		
+
 		/*
 		 * Attribute: queryController
 		 * This by default calls modaldynamix controller within this plugin
@@ -228,7 +250,7 @@ class ModalDynamixTagLib {
 		if (!attrs.queryController) {
 			attrs.queryController="modaldynamix"
 		}
-		
+
 		// This is the default Action for this field is getAjaxCall which resides in above default controller [OVERRIDABLE just set queryAction="myAction" ]
 		/*
 		 * Attribute: queryAction
@@ -247,11 +269,11 @@ class ModalDynamixTagLib {
 		 *
 		 *
 		 */
-		
+
 		if (!attrs.queryAction) {
 			attrs.queryAction="getTemplate"
 		}
-		
+
 		/*
 		 * Attribute: modalJsTemplate
 		 *
@@ -262,9 +284,9 @@ class ModalDynamixTagLib {
 		 * + then closes.
 		 *
 		 */
-		
+
 		attrs.modalJsTemplate='/modaldynamix/modal-js'
-		
+
 		/*
 		 * Attribute: formId
 		 * This by default will set it as [ID]FORM
@@ -276,12 +298,12 @@ class ModalDynamixTagLib {
 		 *
 		 *
 		 */
-		
+
 		if (!attrs.formId) {
 			attrs.formId="${attrs.id}-FORM"
 		}
-		
-		
+
+
 		/*   Attribute: returnController
 		 * 
 		 *  This is the current controller that is serving this taglib call
@@ -291,15 +313,15 @@ class ModalDynamixTagLib {
 		if (!attrs.returnController) {
 			throwTagError("Tag [modalForm] is missing required attribute [returnController] - current controller that is serving this taglib call")
 		}
-		
-		
-		
+
+
+
 	}
-	
+
 	private void verifyIframe(attrs) {
-		
+
 		verifyGeneral(attrs)
-		 
+
 		/*
 		 * Attribute: iController
 		 * This by default calls modaldynamix controller within this plugin
@@ -307,7 +329,6 @@ class ModalDynamixTagLib {
 		 * It simply carries out a call to the controller that will return your iframe form
 		 * later put together to return a full url
 		 * this plugin can display this form 
-	
 		 *
 		 * You can override this by setting:
 		 *  queryiController='MyController'
@@ -317,15 +338,14 @@ class ModalDynamixTagLib {
 		if (!attrs.iController) {
 			attrs.iController=attrs.queryController
 		}
-		
-		
-		
+
+
+
 		/*
 		 * Attribute: queryiAction
 		 * This by default calls getiTemplate controller within this plugin
 		 *
 		 * It simply carries out calls to return templates from within your own application.
-		 
 		 *
 		 * 
 		 * Templates that you have already defined on the main page doing the call
@@ -335,64 +355,72 @@ class ModalDynamixTagLib {
 		 *
 		 *
 		 */
-		
+
 		if (!attrs.iAction) {
 			attrs.iAction="getiTemplate"
 		}
-		
+
 		if (!attrs.url) {
 			def g = new org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib()
 			attrs.url=g.createLink(controller: ''+attrs.iController+'', action: ''+attrs.iAction+'', params:attrs, ,  absolute: 'true')
-		}	
-		
+		}
+
 	}
-	
+
 	private void VerifyRemoteFormAttrs(attrs){
 		verifyGeneral(attrs)
-	  /*
-	   * Attribute: submitValue
-	   *
-	   * ONLY REQUIRED IF: RemoteForm Template is defined
-	   *
-	   * This simply sets the value for your submit value on the remote Form
-	   *
-	   */
-	  if (!attrs.submitValue) {
-		  attrs.submitValue="Submit"
-	  }
-	  
-	  
-	  /*
-	   * Attribute: submitController
-	   *
-	   * ONLY REQUIRED IF: RemoteForm Template is defined
-	   *
-	   * Will throw an error if not set - this is your controller that needs to be called to post the form to
-	   *
-	   *
-	   */
-	  if (!attrs.submitController) {
-		  throwTagError("Tag [modalForm] is missing required attribute [submitController]")
-	  }
-	  
-	  /*
-	   * Attribute: submitAction
-	   *
-	   * ONLY REQUIRED IF: RemoteForm Template is defined
-	   *
-	   * Will throw an error if not set - this is your action within the controller that needs to be called to post the form to
-	   * Typically:
-	   *
-	   *  submitAction="save"
-	   *
-	   *  if _form has been called will be sufficient
-	   *
-	   *
-	   */
-	  if (!attrs.submitAction) {
-		  throwTagError("Tag [modalForm] is missing required attribute [submitAction]")
-	  }
-	  
-  }
-	
+		/*
+		 * Attribute: submitValue
+		 *
+		 * ONLY REQUIRED IF: RemoteForm Template is defined
+		 *
+		 * This simply sets the value for your submit value on the remote Form
+		 *
+		 */
+		if (!attrs.submitValue) {
+			attrs.submitValue="Submit"
+		}
+
+
+		/*
+		 * Attribute: submitController
+		 *
+		 * ONLY REQUIRED IF: RemoteForm Template is defined
+		 *
+		 * Will throw an error if not set - this is your controller that needs to be called to post the form to
+		 *
+		 *
+		 */
+		if (!attrs.submitController) {
+			throwTagError("Tag [modalForm] is missing required attribute [submitController]")
+		}
+
+		/*
+		 * Attribute: submitAction
+		 *
+		 * ONLY REQUIRED IF: RemoteForm Template is defined
+		 *
+		 * Will throw an error if not set - this is your action within the controller that needs to be called to post the form to
+		 * Typically:
+		 *
+		 *  submitAction="save"
+		 *
+		 *  if _form has been called will be sufficient
+		 *
+		 *
+		 */
+		if (!attrs.submitAction) {
+			throwTagError("Tag [modalForm] is missing required attribute [submitAction]")
+		}
+
+	}
+
+	// Returns users grails version
+	private getGrailsVersion(String appVersion) {
+		if (appVersion && appVersion.indexOf('.')>-1) {
+			int lastPos=appVersion.indexOf(".", appVersion.indexOf(".") + 1)
+			double verify=appVersion.substring(0,lastPos) as double
+		}
+	}
+
 }

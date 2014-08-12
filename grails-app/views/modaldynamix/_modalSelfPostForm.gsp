@@ -1,6 +1,3 @@
-<g:if test="${request.xhr }">
-			<meta name='layout' content="modaldynamix"/>
-</g:if>	
 <div class='modal fade' id="${attrs.id }" tabindex='-1' role='dialog' aria-labelledby="${attrs.id}Label" aria-hidden='true'>
 	 <div class="modal-dialog${attrs.id }" style="width:100%;height:100%; ">
       <div class="modal-content">
@@ -23,10 +20,9 @@
 </div>
 
 
-
-<g:javascript>
+<script type="text/javascript">
 	// Self submitting form calls closeModal Below
-	$('#${attrs.formId}').submit(function() {
+	$("#${attrs.formId}").submit(function() {
  		$.ajax({ 
         	data: $(this).serialize(), 
         	type: $(this).attr('method'),
@@ -70,4 +66,4 @@
 			});
 		</g:if>	
 	}
-</g:javascript>
+</script>

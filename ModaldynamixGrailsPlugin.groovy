@@ -1,5 +1,5 @@
 class ModaldynamixGrailsPlugin {
-	def version = "0.4"
+	def version = "0.5"
 	def grailsVersion = "2.0 > *"
  
 	def title = "ModalBox Dynamic Form Updater"

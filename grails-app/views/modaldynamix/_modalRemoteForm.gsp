@@ -1,11 +1,9 @@
-
-		
 <div class='modal fade' id="${attrs.id }" tabindex='-1' role='dialog' aria-labelledby="${attrs.id}Label" aria-hidden='true'>
 	 <div class="modal-dialog${attrs.id }" style="width:100%;height:100%; ">
       <div class="modal-content">
 		<div class='modal-header'>
 			<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
-			<div id='myModalLabel'><h3>${attrs?.title} dd</h3></div>
+			<div id='myModalLabel'><h3>${attrs?.title}</h3></div>
 		</div>
 		<div class="modal-body" >
 			<div class="form-group">

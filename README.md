@@ -1,4 +1,4 @@
-modaldynamix 0.4
+modaldynamix 0.5
 =======================
 
 
@@ -11,13 +11,92 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.4" 
+	compile ":modaldynamix:0.5" 
 ```
+
+
 
 
 ## Getting started
 
-### Modify views/layouts/main.gsp
+### 2.4+ grails assets based apps how to:
+
+[example 2.4 site](https://github.com/vahidhedayati/testmodaldynamix)
+
+```
+grails create-app testmodaldynamix
+
+vi grails-app/conf/BuildConfig.groovy  add:
+
+ compile ":modaldynamix:0.5"
+
+grails refresh-depenedencies
+
+grails create-domain-class MyLocalDomain
+
+vi grails-app/domain/testmodaldynamix/MyLocalDomain.groovy 
+
+package testmodaldynamix
+
+class MyLocalDomain {
+	String myUsers
+    static constraints = {
+    }
+	String toString() { "$myUsers"}
+}
+
+grails generate-all *
+
+Now refer to the example site above and the controllers / views for :
+
+grails-app/controllers/testmodaldynamix/TestdynamixController.groovy 
+package testmodaldynamix
+
+class TestdynamixController {
+
+	def index() { 
+		
+	}
+	
+    def testRemoteForm() {}
+	def testIFrame() {}
+		
+	def testSelfPostForm() { }
+	def testBasicForm() { }
+}
+
+
+ls -l grails-app/views/testdynamix/
+
+-rw-rw-r-- 1 vahid vahid 1.1K Aug 13 09:04 1index.gsp
+-rw-rw-r-- 1 vahid vahid  235 Aug 13 09:04 index.gsp
+-rw-rw-r-- 1 vahid vahid  200 Aug 13 09:04 _MyDivDisplay.gsp
+-rw-rw-r-- 1 vahid vahid  559 Aug 13 09:04 _MyDivForm.gsp
+-rw-rw-r-- 1 vahid vahid  165 Aug 13 09:04 _MyIframeDivDisplay.gsp
+-rw-rw-r-- 1 vahid vahid  522 Aug 13 09:04 _MyIframeDivForm.gsp
+-rw-rw-r-- 1 vahid vahid 1.2K Aug 13 09:04 _MySelfPostDivDisplay.gsp
+-rw-rw-r-- 1 vahid vahid  377 Aug 13 09:04 _MySelfPostDivForm.gsp
+-rw-rw-r-- 1 vahid vahid  531 Aug 13 09:04 _MySelfPostDivForm-morefields.gsp
+-rw-rw-r-- 1 vahid vahid 1.9K Aug 13 09:04 testBasicForm.gsp
+-rw-rw-r-- 1 vahid vahid 2.9K Aug 13 09:04 testIFrame.gsp
+-rw-rw-r-- 1 vahid vahid 3.0K Aug 13 09:04 testRemoteForm.gsp
+-rw-rw-r-- 1 vahid vahid 2.6K Aug 13 09:04 testSelfPostForm.gsp
+
+```
+
+With above in place the example site should work -
+
+In order to get this all working I have manually hacked in jquery-ui in 2.4 asset based apps
+
+It should just work with 2.4 so long as you call it correctly as per examples/documentation. No reason to add any extra plugins to get it working under 2.4
+
+
+
+
+
+
+
+### Modify views/layouts/main.gsp  (Pre 2.4 grails resources based applications)
 
 your layouts main.gsp: (add jquery-ui,jquery + loadbootstrap)
 
@@ -42,9 +121,11 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 
 ## Version info
 ```
-0.3 btn-block removed from button generation
-0.2 Issues with templates from within plugins, new fields fromPlugin="template_from_within_plugin" added 
-0.1 Release
+0.5 	Tidy up removal of 0.4 experiment, updates to bring in line with assets based 2.4 based sites.
+0.4		Experiment to get rid of rendering issues with resources based plugin call - not worked.
+0.3 	btn-block removed from button generation
+0.2 	Issues with templates from within plugins, new fields fromPlugin="template_from_within_plugin" added 
+0.1 	Release
 ```
 
 # Real life examples 

@@ -4,7 +4,6 @@
 	function ${attrs.formId}CloseModal() {
 		//Close modal window and remove backdrop
 		$('#${attrs.id}').dialog().dialog('close');
-		//$('#{attrs.id}').dialog('close');
   		$(".modal-backdrop").hide();
   		var domain="${attrs.domain }";
 		var divId="${attrs.divId }";

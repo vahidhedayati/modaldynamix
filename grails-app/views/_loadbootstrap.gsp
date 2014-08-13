@@ -9,4 +9,5 @@ to stop meddling with existing body/p tags from default grails or any other site
 <g:else>
  	<asset:stylesheet href="bootstrap-combined.min-md-mod.css" />
 	<asset:javascript src="bootstrap.min.js"/>
+	<asset:javascript src="jquery-ui.min.js"/>
 </g:else>

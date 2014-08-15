@@ -7,7 +7,7 @@
 		</div>
 			
 			<div class="modal-body">
-				<iframe width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="false" src="${attrs.url}"></iframe>
+				<iframe  style="zoom=${attrs.iframezoom };width: ${attrs.iframewidth }; height: ${attrs.iframeheight }; margin:${attrs.iframemargin }; padding:${attrs.iframepadding };" frameborder="0" scrolling="auto" allowtransparency="${attrs.iframetransparency }"  src="${attrs.url}"></iframe>
 			</div>
 			
 				 <button type="button" class="close" data-dismiss="modal"  onClick="${attrs.formId}CloseModal()" aria-hidden="true">${attrs.close}</button>

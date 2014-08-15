@@ -1,4 +1,4 @@
-modaldynamix 0.6
+modaldynamix 0.7
 =======================
 
 
@@ -11,7 +11,7 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.6" 
+	compile ":modaldynamix:0.7" 
 ```
 
 
@@ -28,7 +28,7 @@ grails create-app testmodaldynamix
 
 vi grails-app/conf/BuildConfig.groovy  add:
 
- compile ":modaldynamix:0.5"
+ compile ":modaldynamix:0.7"
 
 grails refresh-depenedencies
 
@@ -145,6 +145,7 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 
 ## Version info
 ```
+0.7	iframe css styling / missed out in 0.6 added in 0.7
 0.6	Box styling added - allowing you to define the dimension of your modal box pop up. Based on existing work from extLinkChoice plugin.
 0.5 	Tidy up removal of 0.4 experiment, updates to bring in line with assets based 2.4 based sites. - css button style added
 0.4		Experiment to get rid of rendering issues with resources based plugin call - not worked.

@@ -1,6 +1,7 @@
 <button href="#${attrs.id}"	
 	class="${attrs.style}" 	
 	role="button"  
+	id="${attrs.id}2"
 	data-toggle="modal" 
 	onclick="run${attrs.id}()" 
 	title="${attrs.title}">

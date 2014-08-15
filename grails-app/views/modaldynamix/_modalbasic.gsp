@@ -18,6 +18,22 @@
 
 
 <g:javascript>
+$('#${attrs.id}2').on('click', function(e) {
+		e.preventDefault();
+        	$(".modal").css('position','${attrs.position}');
+		$(".modal").css('top','${attrs.top}');
+		$(".modal").css('margin-top','${attrs.margintop}');
+		$(".modal").css('left','${attrs.left}');
+		$(".modal").css('right','${attrs.right}');
+		$(".modal").css('margin-right','${attrs.marginright}');
+		$(".modal").css('height',$( window ).height()${attrs.calctype}${attrs.height });
+		$(".modal").css('width',$( window ).width()${attrs.calctype}${attrs.width });
+		$(".modal").css('overflow','${attrs.overflow}');
+		$(".modal-body").css('height',$( window ).height()${attrs.calctype}${attrs.bodyheight });
+		$(".modal-body").css('width','${attrs.bodywidth}');
+	});
+
+	
   $('a.btn').on('click', function(e) {
     e.preventDefault();
     var url = $(this).attr('href');

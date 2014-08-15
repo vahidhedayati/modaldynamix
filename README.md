@@ -1,4 +1,4 @@
-modaldynamix 0.5
+modaldynamix 0.6
 =======================
 
 
@@ -11,7 +11,7 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.5" 
+	compile ":modaldynamix:0.6" 
 ```
 
 
@@ -92,6 +92,30 @@ It should just work with 2.4 so long as you call it correctly as per examples/do
 
 
 
+##### 0.6 Modal box styling 
+To define your box dimensions position place the following inside any <g:modalForm tag:
+```
+	    calctype="*"         
+            height="0.4"         
+            width="0.6"         
+            bodyheight="0.4"    
+            bodywidth='98%'     
+            overflow="hidden"   
+            position="fixed"    
+            top="0"    
+            margintop='10em' 
+            marginright='auto' 
+            left='auto'        
+            right='auto'       
+            iframescrolling='auto' 
+            iframetransparency='true' 
+            iframezoom='1'  
+            iframewidth='100%' 
+            iframeheight='100%'  
+            iframemargin='0'     
+            iframepadding='0'    
+```
+The above is an example - play around with above figures to get your match... Take a look at the views in [example 2.4 site](https://github.com/vahidhedayati/testmodaldynamix) for an example.
 
 
 
@@ -121,7 +145,8 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 
 ## Version info
 ```
-0.5 	Tidy up removal of 0.4 experiment, updates to bring in line with assets based 2.4 based sites.
+0.6	Box styling added - allowing you to define the dimension of your modal box pop up. Based on existing work from extLinkChoice plugin.
+0.5 	Tidy up removal of 0.4 experiment, updates to bring in line with assets based 2.4 based sites. - css button style added
 0.4		Experiment to get rid of rendering issues with resources based plugin call - not worked.
 0.3 	btn-block removed from button generation
 0.2 	Issues with templates from within plugins, new fields fromPlugin="template_from_within_plugin" added 
@@ -153,6 +178,27 @@ value="Generate New MyUser Remote Form Example?"
   title="My Modal Title"
   modalTemplate='/modaldynamix/modalbasic'
   modalTemplatePage='/myLocalDomain/formBasic' 
+  
+	    calctype="*"         
+            height="0.4"         
+            width="0.6"         
+            bodyheight="0.4"    
+            bodywidth='98%'     
+            overflow="hidden"   
+            position="fixed"    
+            top="0"    
+            margintop='10em' 
+            marginright='auto' 
+            left='auto'        
+            right='auto'       
+            iframescrolling='auto' 
+            iframetransparency='true' 
+            iframezoom='1'  
+            iframewidth='100%' 
+            iframeheight='100%'  
+            iframemargin='0'     
+            iframepadding='0'    
+            
   />
 </div>
 

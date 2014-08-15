@@ -142,6 +142,7 @@ There are upload file CSV, create template using Ckeditor and standard form upda
 <g:genModalButton
 id="ModalDynamixBASIC"
 divId="MyBasicDiv1"
+style='btn btn-success'
 title="Create New MyUser"
 value="Generate New MyUser Remote Form Example?"
 />
@@ -203,6 +204,7 @@ please refer to iframe example for this feature.
 <g:genModalButton
   id="ModalDynamixSELFPOST"
   divId="MySelfPostDiv1"
+  style='btn btn-primary'
   title="Create New MyUser"
   value="Generate New MyUser?"
 />
@@ -366,6 +368,7 @@ This should be good for all sorts of form actions including ckeditor items withi
 <g:genModalButton
 id="ModalDynamixSPECIALFORM"
 divId="MyDiv1"
+style='btn btn-danger'
 title="Create New MyUser"
 value="Generate New MyUser?"
 />
@@ -391,6 +394,7 @@ ID -> must match the ID of the id set further within the DIVS templates
 divId -> This is the divId put above your main form that contains the modalbox itself and the form within it
 title -> hover title of your new button
 value -> display text in the button
+style -> css style you wish to set the button - above exmaples use bootstrap btn btn-{type} values..
 ```
 
 

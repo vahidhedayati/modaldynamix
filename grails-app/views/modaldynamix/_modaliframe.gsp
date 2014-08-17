@@ -9,10 +9,20 @@
 			<div class="modal-body">
 				<iframe  style="zoom=${attrs.iframezoom };width: ${attrs.iframewidth }; height: ${attrs.iframeheight }; margin:${attrs.iframemargin }; padding:${attrs.iframepadding };" frameborder="0" scrolling="auto" allowtransparency="${attrs.iframetransparency }"  src="${attrs.url}"></iframe>
 			</div>
-			
+		
+		<div class="modal-footer">
+		<g:if test="${attrs.modalFooterPage}">
+			<g:render template="${attrs.modalFooterPage}"  model="[attrs:attrs]"/>
+		</g:if>
+		<g:else>
+			${attrs.footer.encodeAsRaw() }
+		</g:else>	
+		</div>	
 				 <button type="button" class="close" data-dismiss="modal"  onClick="${attrs.formId}CloseModal()" aria-hidden="true">${attrs.close}</button>
 		</div>
+		
 	</div>
+	
 </div>
 
 <g:render template="${attrs.modalJsTemplate}" model="[attrs:attrs]" />

@@ -1,7 +1,8 @@
 package modaldynamix
 
+
 class ModalDynamixTagLib {
-	
+
 	def grailsApplication
 	
 	/*
@@ -295,7 +296,9 @@ class ModalDynamixTagLib {
 		 */
 
 		attrs.modalJsTemplate='/modaldynamix/modal-js'
-
+		
+		
+		
 		/*
 		 * Attribute: formId
 		 * This by default will set it as [ID]FORM
@@ -323,8 +326,7 @@ class ModalDynamixTagLib {
 			throwTagError("Tag [modalForm] is missing required attribute [returnController] - current controller that is serving this taglib call")
 		}
 
-
-
+	
 	}
 
 	private void verifyIframe(attrs) {
@@ -427,180 +429,18 @@ class ModalDynamixTagLib {
 	
 	
 	private void modalBoxConfig(attrs) { 
-		/*
-		 * 
-		$(".modal-body").css('height',$( window ).height()*0.4);
-		$(".modal-body").css('width','98%');
-		 * 
-		 * 
-		 */
-		
-	
-	
-	
-		/*
-		 * Attribute calctype
-		 *
-		 *  Defines how to calculate the modalbox resolution
-		 *  
-		 *  default = '*' 
-		 *  (* means multiply)
-		 *  
-		 *  default values of height and width are in decimals i.e. 
-		 *  0.6 so this works well in this situation
-		 *  
-		 *  if you wanted you could choose: 
-		 *  default = '/'  
-		 *  (/ means  divide)
-		 *  
-		 *  And then provide 2 for height which would = 
-		 *  
-		 *  (screensize) / 2 = your modalbox height
-		 *  
-		 *  
-		 *  
-		 *
-		 *
-		 */
-		if (!attrs.calctype) {
-			attrs.calctype='*'
-		}
 		
 		/*
-		 * Attribute height
+		 * Attribute: modalDimension
 		 *
-		 *  Defines actual modalbox css value for the height of modalbox
-		 *  default = 0.6
-		 *  
-		 *  This is worked out by actual page size * 0.6 so define something more suitable 
-		 *  that can 
+		 * sets up configuration for custom dymension config
 		 *
 		 */
-		if (!attrs.height) {
-			attrs.height='0.6'
-		}
-		
-		/*
-		 * Attribute width
-		 *
-		 *  Defines actual modalbox css value for the width of modalbox
-		 *  default = 0.6
-		 *
-		 *  This is worked out by actual page size * 0.6 so define something more suitable
-		 *  that can
-		 *
-		 */
-		if (!attrs.width) {
-			attrs.width='0.6'
-		}
-		
-		/*
-		 * Attribute bodyheight
-		 *
-		 *  Defines actual modal-body css value for the height of modal-body height
-		 *  default = 0.4
-		 *
-		 *  This is worked out by actual page size * 0.4 so define something more suitable
-		 *  that can
-		 *
-		 */
-		if (!attrs.bodyheight) {
-			attrs.bodyheight='0.4'
-		}
-		
-		/*
-		 * Attribute bodywidth
-		 *
-		 *  Defines actual modal-body css value for the height of modal-body width
-		 *  default = 98%
-		 *
-		 *  This is worked out in percentages - change if required
-		 *  that can
-		 *
-		 */
-		if (!attrs.bodywidth) {
-			attrs.bodywidth='98%'
-		}
 
-		/*
-		 * Attribute overflow
-		 *
-		 *  Defines actual modalbox css value for overflow of scroll bars for main modalbox 
-		 *  default = hidden
-		 *
-		 */
-		if (!attrs.overflow) {
-			attrs.overflow='hidden'
-		}
+		attrs.modalDimension='/modaldynamix/modaldymension'
+
 		
-	
-		/*
-		 * Attribute position 
-		 *  
-		 *  Defines actual modalbox css value for position on the screen 
-		 *  default = fixed 
-		 * 
-		 */
-		if (!attrs.position) {
-			attrs.position='fixed'
-		}
-		
-		/*
-		 * Attribute top
-		 *
-		 *  Defines actual modalbox css value for top on the screen
-		 *  default = 0
-		 *
-		 */
-		if (!attrs.top) {
-			attrs.top='0'
-		}
-		
-		/*
-		 * Attribute margintop
-		 *
-		 *  Defines actual modalbox css value for margintop on the screen
-		 *  default = 10em
-		 *
-		 */
-		if (!attrs.margintop) {
-			attrs.margintop='10em'
-		}
-		
-		/*
-		 * Attribute marginright
-		 *
-		 *  Defines actual modalbox css value for marginright on the screen
-		 *  default = 10em
-		 *
-		 */
-		if (!attrs.marginright) {
-			attrs.marginright='auto'
-		}
-		
-		/*
-		 * Attribute left
-		 *
-		 *  Defines actual modalbox css value for left on the screen
-		 *  default = auto
-		 *
-		 */
-		if (!attrs.left) {
-			attrs.left='auto'
-		}
-		
-		/*
-		 * Attribute right
-		 *
-		 *  Defines actual modalbox css value for right on the screen
-		 *  default = auto
-		 *
-		 */
-		if (!attrs.right) {
-			attrs.right='auto'
-		}
-		
-		/*
+			/*
 		 * Attribute close
 		 *
 		 *  Defines actual modal-body Close button label
@@ -610,6 +450,20 @@ class ModalDynamixTagLib {
 		if (!attrs.close) {
 			attrs.close='X'
 		}
+		
+		
+		/*
+		 * Attribute: footer
+		 * This can be a string sent as the footer
+		 * You can alternatively actually define a template i.e.
+		 * modalFooterPage="/local/view/footer.gsp"
+		 * This can include your form buttons I guess should also end the form too...
+		 */
+		if (!attrs.footer) {
+			def appname=grailsApplication.metadata['app.name']
+			attrs.footer="&copy; ${appname}"
+		}
+
 	}
 	
 	

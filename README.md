@@ -1,4 +1,4 @@
-modaldynamix 0.7
+modaldynamix 0.8
 =======================
 
 
@@ -11,7 +11,7 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.7" 
+	compile ":modaldynamix:0.8" 
 ```
 
 
@@ -92,32 +92,6 @@ It should just work with 2.4 so long as you call it correctly as per examples/do
 
 
 
-##### 0.6 Modal box styling 
-To define your box dimensions position place the following inside any <g:modalForm tag:
-```
-	    calctype="*"         
-            height="0.4"         
-            width="0.6"         
-            bodyheight="0.4"    
-            bodywidth='98%'     
-            overflow="hidden"   
-            position="fixed"    
-            top="0"    
-            margintop='10em' 
-            marginright='auto' 
-            left='auto'        
-            right='auto'       
-            iframescrolling='auto' 
-            iframetransparency='true' 
-            iframezoom='1'  
-            iframewidth='100%' 
-            iframeheight='100%'  
-            iframemargin='0'     
-            iframepadding='0'    
-```
-The above is an example - play around with above figures to get your match... Take a look at the views in [example 2.4 site](https://github.com/vahidhedayati/testmodaldynamix) for an example.
-
-
 
 
 ### Modify views/layouts/main.gsp  (Pre 2.4 grails resources based applications)
@@ -145,12 +119,25 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 
 ## Version info
 ```
-0.7	iframe css styling / missed out in 0.6 added in 0.7
-0.6	Box styling added - allowing you to define the dimension of your modal box pop up. Based on existing work from extLinkChoice plugin.
-0.5 	Tidy up removal of 0.4 experiment, updates to bring in line with assets based 2.4 based sites. - css button style added
+0.8		bootstrap,min.css used - removal of custom bootstrap - no need to actual css styles to be 
+		added since it applies the dynamic laws of modalbox. custom modalbox css configuration 
+		optional.
+ 	
+0.7		iframe css styling / missed out in 0.6 added in 0.7
+
+0.6		Box styling added - allowing you to define the dimension of your modal box pop up. 
+		Based on existing work from extLinkChoice plugin.
+		
+0.5 	Tidy up removal of 0.4 experiment, updates to bring in line with assets based 2.4 based 
+		sites. - css button style added
+		
 0.4		Experiment to get rid of rendering issues with resources based plugin call - not worked.
+
 0.3 	btn-block removed from button generation
-0.2 	Issues with templates from within plugins, new fields fromPlugin="template_from_within_plugin" added 
+
+0.2 	Issues with templates from within plugins, new fields	
+		fromPlugin="template_from_within_plugin" added
+ 
 0.1 	Release
 ```
 
@@ -179,26 +166,7 @@ value="Generate New MyUser Remote Form Example?"
   title="My Modal Title"
   modalTemplate='/modaldynamix/modalbasic'
   modalTemplatePage='/myLocalDomain/formBasic' 
-  
-	    calctype="*"         
-            height="0.4"         
-            width="0.6"         
-            bodyheight="0.4"    
-            bodywidth='98%'     
-            overflow="hidden"   
-            position="fixed"    
-            top="0"    
-            margintop='10em' 
-            marginright='auto' 
-            left='auto'        
-            right='auto'       
-            iframescrolling='auto' 
-            iframetransparency='true' 
-            iframezoom='1'  
-            iframewidth='100%' 
-            iframeheight='100%'  
-            iframemargin='0'     
-            iframepadding='0'    
+   
             
   />
 </div>
@@ -474,6 +442,9 @@ So lets take a look inside this file what is going on here?
 ```
 
 #### g:modalForm
+refer to the [basic page in assets test of this site](https://github.com/vahidhedayati/testmodaldynamix/blob/master/grails-app/views/testdynamix/testBasicForm.gsp). This has customg css styling defined inside it.
+
+
 ```
 id -> must match the ID of the id set further within the DIVS templates
 
@@ -485,7 +456,50 @@ divId -> This must be the mainDiv containing yet another template which actually
 
 returnController -> The current controller calling this page and contains the templates for your main divs on the page
 
-modalTemplatePage ->a template within your local project that contains a complete form
+modalTemplatePage -> A template within your local project that contains a complete form
+
+modalFooterPage ->  This can include the form buttons but should really end the above 
+					templatePageform tag.. if it does.
+					
+footer -> If no footer set - it will default to copyright your app name otherwise set a string as 
+		  your footer or set it as a blank space if you don't require it " "
+		  
+	
+	// PLEASE DO NOT USE THESE UNLESS YOU KNOW WHAT YOU ARE DOING !
+	// ALL OF THE CSS CONFIG IS NO LONGER REQUIRED
+	// Refer to link above 
+	
+		  					
+Some variation in input either define physical size using em/px or set decimal values and calctype:
+ 	calctype="*"         
+    height="0.4"         
+    width="0.6"         
+    bodyheight="0.4"
+
+Above is then based on screen size height and size of modal box according to those calculations. Please refer to above notes - this method is the older method and not so great with screen size variation use physical points like below:
+            
+ height= "3em"         
+ width="2em"         
+ bodyheight="3em"    
+ bodywidth='98%'     
+ // Set this to hidden if you don't want scroll bars
+ overflow="auto"   
+ // fixed or absolute relative may end up where it is called.
+ position="absolute"    
+ top="0"    
+ margintop='10em' 
+ marginright='auto' 
+ // This sets it to the middle of the page
+ left='auto'        
+ right='auto'
+  // These are only required if you are generating an iframe based form.       
+ iframescrolling='auto' 
+ iframetransparency='true' 
+ iframezoom='1'  
+ iframewidth='100%' 
+ iframeheight='100%'  
+ iframemargin='0'     
+ iframepadding='0'    
 ``` 
 
 [_form.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views//myLocalDomain/_form.gsp)

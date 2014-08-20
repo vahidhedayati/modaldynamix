@@ -11,12 +11,12 @@
 					<g:loadATemplate fromPlugin="${attrs.fromPlugin }" template="${attrs.modalTemplatePage }"/>
 				</g:if>
 				<g:else>
-					<g:render template="${attrs.modalTemplatePage}" model="[attrs:attrs]"/>
+					<g:render template="${attrs.modalTemplatePage}" model="[attrs:attrs,params:params,definedParams:definedParams]"/>
 				</g:else>
 			</div>
 			<div class="modal-footer">
 				<g:if test="${attrs.modalFooterPage}">
-					<g:render template="${attrs.modalFooterPage}"  model="[attrs:attrs]"/>
+					<g:render template="${attrs.modalFooterPage}"  model="[attrs:attrs,params:params,definedParams:definedParams]"/>
 				</g:if>
 				<g:else>
 					${attrs.footer.encodeAsRaw() }

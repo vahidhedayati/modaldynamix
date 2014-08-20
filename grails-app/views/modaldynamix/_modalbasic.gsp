@@ -7,13 +7,13 @@
 		<div class="modal-body">
 			<div class="divDialogElements">
 				<div class="divPopupMenu">
-					<g:render template="${attrs.modalTemplatePage}"  model="[attrs:attrs]"/>
+					<g:render template="${attrs.modalTemplatePage}"  model="[attrs:attrs,params:params,definedParams:definedParams]"/>
 				</div>
 			</div>
 		</div>
 		<div class="modal-footer">
 		<g:if test="${attrs.modalFooterPage}">
-			<g:render template="${attrs.modalFooterPage}"  model="[attrs:attrs]"/>
+			<g:render template="${attrs.modalFooterPage}"  model="[attrs:attrs,params:params,definedParams:definedParams]"/>
 		</g:if>
 		<g:else>
 			${attrs.footer.encodeAsRaw() }

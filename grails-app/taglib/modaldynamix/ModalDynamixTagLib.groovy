@@ -230,8 +230,17 @@ class ModalDynamixTagLib {
 		modalIframeConfig(attrs)
 		
 		
+		
+		// 0.9 improvements pass params map from taglib call to final view...
+		Map definedParams = [:]
+		
+		if (attrs.params) {
+			definedParams.putAll(attrs.params)
+		}
+		
+		
 
-		out << g.render(contextPath: pluginContextPath,template: attrs.modalTemplate, model: [attrs:attrs])
+		out << g.render(contextPath: pluginContextPath,template: attrs.modalTemplate, model: [attrs:attrs, definedParams:definedParams])
 
 	}
 

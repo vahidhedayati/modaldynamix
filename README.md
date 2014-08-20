@@ -1,4 +1,4 @@
-modaldynamix 0.8
+modaldynamix 0.9
 =======================
 
 
@@ -11,9 +11,8 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.8" 
+	compile ":modaldynamix:0.9" 
 ```
-
 
 
 
@@ -28,7 +27,7 @@ grails create-app testmodaldynamix
 
 vi grails-app/conf/BuildConfig.groovy  add:
 
- compile ":modaldynamix:0.7"
+ compile ":modaldynamix:0.9"
 
 grails refresh-depenedencies
 
@@ -119,6 +118,9 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 
 ## Version info
 ```
+0.9		definedParams added - although original parameters passed via your form Div is passed along.
+		Will explain this in detail.
+
 0.8		bootstrap,min.css used - removal of custom bootstrap - no need to actual css styles to be 
 		added since it applies the dynamic laws of modalbox. custom modalbox css configuration 
 		optional.
@@ -140,6 +142,128 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
  
 0.1 	Release
 ```
+
+
+# 0.9 passing parameters from your original call all the way until form is generated in popup.
+
+
+```
+<div class="envtabs  navbar">
+	 <ul class="nav-pills pull-right">
+	 
+		<li class="btn btn-default dropdown">
+			<a href="#" data-toggle="dropdown" class="dropdown-toggle"> 
+				${currentgroup}
+				<b class="caret"></b>
+			</a>
+			<ul class="dropdown-menu">
+				<li  class="dopdown-menu">
+					<g:link controller="MyController"  action="browse" id="${current?.id}">
+						View division : ${currentgroup} 
+					</g:link>
+				</li>
+				<li class="dopdown-menu">
+					<a href="#ModalDynamixGroupFORM"	
+						role="button"  
+						id="ModalDynamixGroupFORM2"
+						data-toggle="modal" 
+						onclick="runModalDynamixGroupFORM()" 
+						title="New Group">	
+						New Group</a>
+		 		</li>
+			</ul>
+		</li>
+	</ul>	
+	</div>
+	<script type="text/javascript">
+	function runModalDynamixGroupFORM() {
+		$('#modGroup1').show();
+	}
+	</script>
+	
+	<div id="modGroup">
+	</div>
+	<div id="modGroup1" style="display:none;">
+  		<g:render template="/myController/modGroupForm" model="${[envid:current?.id, navid: current?.id]}"/>
+    </div>	
+    	
+	
+```		
+
+By default this was actually working - added the extra steps anyways.
+
+So to access envid or navid in this case Inside final _form.gsp which is called from myController/modGroupForm :
+
+I can call :
+
+```
+ 4: ${params?.id }  -- 5: (${navid })
+===> ${definedParams.navid2}   ===> ${definedParams.navid3}
+${params }
+```
+
+In the above case the current?.id was actually id returned to original view generating all of the above.... In custom calls where you wish to pass totally different values than the default params.
+Again since navid is declared is readable in the final _form.gsp
+
+
+Now if we look at  myController/modGroupForm:
+
+ ```
+<g:modalForm
+  	id="ModalDynamixGroupFORM"
+  	formId="modGroupForm"
+  	title="New Group"
+  	divId="modGroup"
+  	returnController="myController"
+	fromPlugin=""
+  	modalTemplatePage="/myController/form"
+	submitController="myController" 
+    submitAction="save"
+    submitValue="New Group"
+    modalTemplate='/modaldynamix/modalRemoteForm'
+  	domain="myApp.myController"
+  	params="[navid2: navid, navid3: envid]"
+  	
+            height="25em"         
+            width="40em"         
+            bodyheight="25em"     
+            bodywidth='98%'     
+            overflow="hidden"   
+            position="fixed"    
+            top="0"    
+            margintop='10em' 
+            marginright='auto' 
+            left='auto'        
+            right='auto'       
+            iframescrolling='auto' 
+            iframetransparency='true' 
+            iframezoom='1'  
+            iframewidth='100%' 
+            iframeheight='100%'  
+            iframemargin='0'     
+            iframepadding='0'    
+  />
+
+```
+
+I have passed the required params inside the params call like above: to recall these custom params in the final myController/_form.gsp call called modalTemplatePage above, the values returned can be access like this (using definedParams):
+
+```
+${definedParams.navid2}   ===> ${definedParams.navid3}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # Real life examples 
 try out [mailinglist|http://grails.org/plugin/mailinglist]  Installing this plugin into an existing project, then once instructions followed the buttons within contactclients.gsp are all driven by this plugin.

@@ -11,10 +11,10 @@
             	  update="${id}"  onComplete="${attrs.formId}CloseModal()">
 			
 				<g:if test="${attrs.fromPlugin }">
-					<g:loadATemplate fromPlugin="${attrs.fromPlugin }" template="${attrs.modalTemplatePage }"/>
+					<g:loadATemplate fromPlugin="${attrs.fromPlugin }" template="${attrs.modalTemplatePage }"  model="[attrs:attrs, params:params, definedParams:definedParams]"/>
 				</g:if>
 				<g:else>
-					<g:render template="${attrs.modalTemplatePage}" model="[attrs:attrs]"/>
+					<g:render template="${attrs.modalTemplatePage}" model="[attrs:attrs, params:params,definedParams:definedParams]"/>
 				</g:else>
 				
 			 	<g:submitToRemote class="myformsubmit" url="[controller:attrs.submitController, action:attrs.submitAction]" update="${attrs.id}" onComplete="${attrs.formId}CloseModal()" value="${attrs.submitValue}" />

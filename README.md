@@ -1,4 +1,4 @@
-modaldynamix 0.9
+modaldynamix 0.10
 =======================
 
 
@@ -11,7 +11,7 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.9" 
+	compile ":modaldynamix:0.10" 
 ```
 
 
@@ -27,7 +27,7 @@ grails create-app testmodaldynamix
 
 vi grails-app/conf/BuildConfig.groovy  add:
 
- compile ":modaldynamix:0.9"
+ compile ":modaldynamix:0.10"
 
 grails refresh-depenedencies
 
@@ -118,6 +118,9 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 
 ## Version info
 ```
+0.10	pluginbuddy called - removed grails app version checks from this plugin.
+		updated to use 2.4.2 as base.
+		
 0.9		definedParams added - although original parameters passed via your form Div is passed along.
 		Will explain this in detail.
 

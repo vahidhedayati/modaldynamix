@@ -1,5 +1,5 @@
 grails.project.work.dir = 'target'
-grails.project.dependency.resolver = 'maven'
+//grails.project.dependency.resolver = 'maven'
 grails.project.dependency.resolution = {
 
 	inherits 'global'
@@ -13,8 +13,8 @@ grails.project.dependency.resolution = {
 	}
 
 	plugins {
-		compile ":jquery-ui:1.10.3"
-		build ':release:3.0.1', ':rest-client-builder:1.0.3', {
+		compile ":jquery-ui:1.10.3", { excludes 'jquery' }
+		build ':release:3.0.1', ':rest-client-builder:1.0.3', ':pluginbuddy:0.2', {
 			export = false
 		}
 	}

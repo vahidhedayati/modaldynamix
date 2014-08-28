@@ -21,13 +21,7 @@ class ModalDynamixTagLib {
 	 */
 
 	def loadbootstrap= {
-		def gver=grailsApplication.metadata['app.grails.version']
-		double verify=getGrailsVersion(gver)
-		def gfolder="resources"
-		if (verify >= 2.4 ) {
-			gfolder="assets"
-		}
-		out << g.render(contextPath: pluginContextPath,template: 'loadbootstrap' , model:[gfolder:gfolder])
+		out << g.render(contextPath: pluginContextPath,template: 'loadbootstrap' )
 	}
 
 
@@ -565,12 +559,6 @@ class ModalDynamixTagLib {
 	}
 	
 
-	// Returns users grails version
-	private getGrailsVersion(String appVersion) {
-		if (appVersion && appVersion.indexOf('.')>-1) {
-			int lastPos=appVersion.indexOf(".", appVersion.indexOf(".") + 1)
-			double verify=appVersion.substring(0,lastPos) as double
-		}
-	}
+	
 
 }

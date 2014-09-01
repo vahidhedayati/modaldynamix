@@ -14,7 +14,8 @@ grails.project.dependency.resolution = {
 
 	plugins {
 		compile ":jquery-ui:1.10.3", { excludes 'jquery' }
-		build ':release:3.0.1', ':rest-client-builder:1.0.3', ':pluginbuddy:0.3', {
+		runtime ':pluginbuddy:0.3'
+		build ':release:3.0.1', ':rest-client-builder:1.0.3' {
 			export = false
 		}
 	}

@@ -1,4 +1,4 @@
-modaldynamix 0.11
+modaldynamix 0.12
 =======================
 
 
@@ -11,7 +11,7 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.11" 
+	compile ":modaldynamix:0.12" 
 ```
 
 
@@ -118,7 +118,10 @@ Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-t
 
 ## Version info
 ```
+0.12	Hope issue is now resolved
+
 0.11	latest plugin buddy called due to a bug
+
 0.10	pluginbuddy called - removed grails app version checks from this plugin.
 		updated to use 2.4.2 as base.
 		

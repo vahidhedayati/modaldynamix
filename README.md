@@ -34,7 +34,7 @@ Update [BuildConfig.groovy](https://github.com/vahidhedayati/testmodaldynamix/bl
 compile ":jquery-ui:1.10.3"
 compile ":modaldynamix:0.12" 
 ```
-update (main.gsp)(https://github.com/vahidhedayati/testmodaldynamix/blob/master/grails-app/views/layouts/main.gsp) add this loadbootrap call, if your site is not already bootstrapped. You could also choose not to make your entire site load this and instead make the call on a given gsp page that will use the plugin.
+update (main.gsp)[https://github.com/vahidhedayati/testmodaldynamix/blob/master/grails-app/views/layouts/main.gsp] add this loadbootrap call, if your site is not already bootstrapped. You could also choose not to make your entire site load this and instead make the call on a given gsp page that will use the plugin.
 ```
 <!-- Vahid load in bootstrap - if app has no bootstrap -->
 <g:loadbootstrap/>

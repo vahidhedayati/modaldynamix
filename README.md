@@ -18,79 +18,35 @@ Add plugin Dependency :
 
 ## Getting started
 
-### 2.4+ grails assets based apps how to:
 
-[example 2.4 site](https://github.com/vahidhedayati/testmodaldynamix)
+## Post 2.4 (tested on 2.4.4)
 
+Please refer to [testmodaldynamix](https://github.com/vahidhedayati/testmodaldynamix) to see this being used and where all the below examples were taken from.
+
+After having either followed above steps or copied the
+[test controller](https://github.com/vahidhedayati/testmodaldynamix/blob/master/grails-app/controllers/testmodaldynamix/TestdynamixController.groovy)
+and copied [the views folder](https://github.com/vahidhedayati/testmodaldynamix/tree/master/grails-app/views/testdynamix) to you own app.
+
+The changes required to a vanilla 2.4.4 install are:
+
+Update [BuildConfig.groovy](https://github.com/vahidhedayati/testmodaldynamix/blob/master/grails-app/conf/BuildConfig.groovy)
 ```
-grails create-app testmodaldynamix
-
-vi grails-app/conf/BuildConfig.groovy  add:
-
- compile ":modaldynamix:0.10"
-
-grails refresh-depenedencies
-
-grails create-domain-class MyLocalDomain
-
-vi grails-app/domain/testmodaldynamix/MyLocalDomain.groovy 
-
-package testmodaldynamix
-
-class MyLocalDomain {
-	String myUsers
-    static constraints = {
-    }
-	String toString() { "$myUsers"}
-}
-
-grails generate-all *
-
-Now refer to the example site above and the controllers / views for :
-
-grails-app/controllers/testmodaldynamix/TestdynamixController.groovy 
-package testmodaldynamix
-
-class TestdynamixController {
-
-	def index() { 
-		
-	}
-	
-    def testRemoteForm() {}
-	def testIFrame() {}
-		
-	def testSelfPostForm() { }
-	def testBasicForm() { }
-}
-
-
-ls -l grails-app/views/testdynamix/
-
--rw-rw-r-- 1 vahid vahid 1.1K Aug 13 09:04 1index.gsp
--rw-rw-r-- 1 vahid vahid  235 Aug 13 09:04 index.gsp
--rw-rw-r-- 1 vahid vahid  200 Aug 13 09:04 _MyDivDisplay.gsp
--rw-rw-r-- 1 vahid vahid  559 Aug 13 09:04 _MyDivForm.gsp
--rw-rw-r-- 1 vahid vahid  165 Aug 13 09:04 _MyIframeDivDisplay.gsp
--rw-rw-r-- 1 vahid vahid  522 Aug 13 09:04 _MyIframeDivForm.gsp
--rw-rw-r-- 1 vahid vahid 1.2K Aug 13 09:04 _MySelfPostDivDisplay.gsp
--rw-rw-r-- 1 vahid vahid  377 Aug 13 09:04 _MySelfPostDivForm.gsp
--rw-rw-r-- 1 vahid vahid  531 Aug 13 09:04 _MySelfPostDivForm-morefields.gsp
--rw-rw-r-- 1 vahid vahid 1.9K Aug 13 09:04 testBasicForm.gsp
--rw-rw-r-- 1 vahid vahid 2.9K Aug 13 09:04 testIFrame.gsp
--rw-rw-r-- 1 vahid vahid 3.0K Aug 13 09:04 testRemoteForm.gsp
--rw-rw-r-- 1 vahid vahid 2.6K Aug 13 09:04 testSelfPostForm.gsp
-
+compile ":jquery-ui:1.10.3"
+compile ":modaldynamix:0.12" 
+```
+update (main.gsp)(https://github.com/vahidhedayati/testmodaldynamix/blob/master/grails-app/views/layouts/main.gsp) add this loadbootrap call, if your site is not already bootstrapped. You could also choose not to make your entire site load this and instead make the call on a given gsp page that will use the plugin.
+```
+<!-- Vahid load in bootstrap - if app has no bootstrap -->
+<g:loadbootstrap/>
 ```
 
-With above in place the example site should work -
+Update [application.js](https://github.com/vahidhedayati/testmodaldynamix/blob/master/grails-app/assets/javascripts/application.js) addd the jquery-ui line
+```
+//= require jquery
+//= require jquery-ui/js/jquery-ui-1.10.3.custom.min
+```
 
-In order to get this all working I have manually hacked in jquery-ui in 2.4 asset based apps
-
-It should just work with 2.4 so long as you call it correctly as per examples/documentation. No reason to add any extra plugins to get it working under 2.4
-
-
-
+I think that should be all. If any issues/suggestions raise it [here](https://github.com/vahidhedayati/modaldynamix/issues)
 
 
 ### Modify views/layouts/main.gsp  (Pre 2.4 grails resources based applications)
@@ -112,9 +68,8 @@ You will notice from a default installed application the extra jquery jquery-ui 
 If your site is already bootstrapped then no need to load that up.
 
 
-Please refer to [Example site](https://github.com/vahidhedayati/grails-modaldx-test) to see this being used and where all the below examples were taken from.
+Please refer to [grails-modaldx-test](https://github.com/vahidhedayati/grails-modaldx-test) to see this being used and where all the below examples were taken from.
 
-### With above in place here are some examples on how to use this plugin:
 
 ## Version info
 ```

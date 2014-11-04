@@ -17,9 +17,9 @@ Add plugin Dependency :
 
 
 ## Getting started
+I have done another [walkthrough](https://github.com/vahidhedayati/modaldynamix/wiki/Yet-another-walk-through), thought the instructions were missing.
 
-
-## Post 2.4 (tested on 2.4.4)
+## Instructions post 2.4 (tested on 2.4.4)
 
 Please refer to [testmodaldynamix](https://github.com/vahidhedayati/testmodaldynamix) to see this being used and where all the below examples were taken from.
 

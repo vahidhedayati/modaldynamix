@@ -1,31 +1,43 @@
-<div class='modal fade' id="${attrs.id }" tabindex='-1' role='dialog' aria-labelledby="${attrs.id}Label" aria-hidden='true'>
-	 <div class="modal-dialog${attrs.id }" style="width:100%;height:100%; ">
-      <div class="modal-content">
-		<div class='modal-header'>
-			<button type='button' class='close' data-dismiss='modal' aria-hidden='true'>×</button>
-			<div id='myModalLabel'><h3>${attrs?.title}</h3></div>
-		</div>
-		<div class="form-group">
-			<div class="modal-body" >
-				<g:if test="${attrs.fromPlugin }">
-					<g:loadATemplate fromPlugin="${attrs.fromPlugin }" template="${attrs.modalTemplatePage }"/>
-				</g:if>
-				<g:else>
-					<g:render template="${attrs.modalTemplatePage}" model="[attrs:attrs,params:params,definedParams:definedParams]"/>
-				</g:else>
+<div class='modal fade' id="${attrs.id }" tabindex='-1' role='dialog'
+	aria-labelledby="${attrs.id}Label" aria-hidden='true'>
+	<div class="modal-dialog">
+		<div class="modal-content">
+
+			<div class='modal-header'>
+				<button type='button' class='close' data-dismiss='modal'
+					aria-hidden='true'>×</button>
+				<h3>
+					${attrs?.title}
+				</h3>
 			</div>
+
+			<div class="modal-body">
+				<div class="form-group">
+					<g:if test="${attrs.fromPlugin }">
+						<g:loadATemplate fromPlugin="${attrs.fromPlugin }"
+							template="${attrs.modalTemplatePage }" />
+					</g:if>
+					<g:else>
+						<g:render template="${attrs.modalTemplatePage}"
+							model="[attrs:attrs,params:params,definedParams:definedParams]" />
+					</g:else>
+				</div>
+			</div>
+
 			<div class="modal-footer">
 				<g:if test="${attrs.modalFooterPage}">
-					<g:render template="${attrs.modalFooterPage}"  model="[attrs:attrs,params:params,definedParams:definedParams]"/>
+					<g:render template="${attrs.modalFooterPage}"
+						model="[attrs:attrs,params:params,definedParams:definedParams]" />
 				</g:if>
 				<g:else>
 					${attrs.footer.encodeAsRaw() }
-				</g:else>	
+				</g:else>
 			</div>
+
 		</div>
 	</div>
-	</div>
 </div>
+
 
 
 <g:render template="${attrs.modalDimension}" model="[attrs:attrs]" />

@@ -1,4 +1,4 @@
-modaldynamix 0.12
+modaldynamix 0.13
 =======================
 
 
@@ -11,7 +11,7 @@ actions update your underlying form without refreshing actual page.
 ## Installation:
 Add plugin Dependency :
 ```groovy
-	compile ":modaldynamix:0.12" 
+	compile ":modaldynamix:0.13" 
 ```
 
 
@@ -73,6 +73,8 @@ Please refer to [grails-modaldx-test](https://github.com/vahidhedayati/grails-mo
 
 ## Version info
 ```
+0.13 	Updated bootstrap.min.css to bootstrap 3. the modalRemote modaliframe and modalSelfPost form gsps updated
+
 0.12	Hope issue is now resolved
 
 0.11	latest plugin buddy called due to a bug

@@ -1,4 +1,4 @@
-modaldynamix 0.13
+modaldynamix 1
 =======================
 
 
@@ -10,14 +10,30 @@ actions update your underlying form without refreshing actual page.
 
 ## Installation:
 Add plugin Dependency :
+
+Grails 2.X:
+
 ```groovy
 	compile ":modaldynamix:0.13" 
+
+```
+Grails 3.X:
+```groovy
+	compile "org.grails.plugins:modaldynamix:1.0"
 ```
 
 
 
 ## Getting started
+
 I have done another [walkthrough](https://github.com/vahidhedayati/modaldynamix/wiki/Yet-another-walk-through), thought the instructions were missing.
+
+Demo site for grails 3:
+
+https://github.com/vahidhedayati/testmodaldynamixg3
+
+The instructions are identical..
+
 
 ## Instructions post 2.4 (tested on 2.4.4)
 
@@ -73,6 +89,8 @@ Please refer to [grails-modaldx-test](https://github.com/vahidhedayati/grails-mo
 
 ## Version info
 ```
+1.0     Ported over to grails 3 - 0.X versions for grails 2.
+
 0.13 	Updated bootstrap.min.css to bootstrap 3. the modalRemote modaliframe and modalSelfPost form gsps updated
 
 0.12	Hope issue is now resolved
@@ -173,7 +191,7 @@ Again since navid is declared is readable in the final _form.gsp
 Now if we look at  myController/modGroupForm:
 
  ```
-<g:modalForm
+<md:modalForm
   	id="ModalDynamixGroupFORM"
   	formId="modGroupForm"
   	title="New Group"
@@ -240,7 +258,7 @@ There are upload file CSV, create template using Ckeditor and standard form upda
 
 [testBasicForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/testBasicForm.gsp)
 ```gsp
-<g:genModalButton
+<md:genModalButton
 id="ModalDynamixBASIC"
 divId="MyBasicDiv1"
 style='btn btn-success'
@@ -249,7 +267,7 @@ value="Generate New MyUser Remote Form Example?"
 />
 	
 <div id="MyBasicDiv1">
-  <g:modalForm
+  <md:modalForm
   id="ModalDynamixBASIC"
   title="My Modal Title"
   modalTemplate='/modaldynamix/modalbasic'
@@ -265,7 +283,7 @@ value="Generate New MyUser Remote Form Example?"
 
 So what is going on above?
 
-##### g:genModalButton 
+##### md:genModalButton 
 loads up a button that triggers modalbox
 ```
 ID -> must match the ID of the id set further within the DIVS templates
@@ -274,7 +292,7 @@ title -> hover title of your new button
 value -> display text in the button
 ```
 	
-#### g:modalForm
+#### md:modalForm
 Main DIV wrapping the call  'MyBasicDiv1'  [ the name must match divId label above (usually) in this case of a basic call maybe not ] 
 ```
 -> ID	Must match above href
@@ -304,7 +322,7 @@ This should be good for all sorts of form actions including ckeditor items withi
 please refer to iframe example for this feature.
 
 ```gsp
-<g:genModalButton
+<md:genModalButton
   id="ModalDynamixSELFPOST"
   divId="MySelfPostDiv1"
   style='btn btn-primary'
@@ -330,7 +348,7 @@ please refer to iframe example for this feature.
 
 So what is going on above?
 
-##### g:genModalButton 
+##### md:genModalButton 
 loads up a button that triggers modalbox
 ```
 ID -> must match the ID of the id set further within the DIVS templates
@@ -340,7 +358,7 @@ value -> display text in the button
 ```
 	
 #### MySelfPostDiv1
-Main DIV wrapping the call  'MySelfPostDiv1'  [ the name must match divId label below in g:genModalButton call ] 
+Main DIV wrapping the call  'MySelfPostDiv1'  [ the name must match divId label below in md:genModalButton call ] 
 This now calls a template within my example project the project which is making the call, this is the taglib call back to this plugin but needs to be in a template.
 The reason is that the plugin later on calls this page to store its content for reuse of same button calls.
 
@@ -349,7 +367,7 @@ The reason is that the plugin later on calls this page to store its content for 
 So lets take a look inside this file what is going on here?
 
 ```gsp
-<g:modalForm
+<md:modalForm
  
   id="ModalDynamixSELFPOST"
   formId="MyForm"
@@ -367,7 +385,7 @@ So lets take a look inside this file what is going on here?
 />
 ```
 
-#### g:modalForm
+#### md:modalForm
 ```
 id -> must match the ID of the id set further within the DIVS templates
 
@@ -421,7 +439,7 @@ It is just a simple select element with its tags etc. the only difference the fr
 
 
 
-#### g:modalForm flexibility 
+#### md:modalForm flexibility 
 
 Take a look at these two pages,it shows you that if you wanted to make the process even more dynamic by assigning form actions controllers from 
 the main page doing the calls:
@@ -460,7 +478,7 @@ For all the files related to self posting example refer to:
 From what I understand this is soon to be the past, so maybe this will be revisited for grails 2.4
 
 This is quite similar to above but actual calls on g:remoteForm functionality and does require for you to provide more 
-fields within the g:modalForm tag as you will see in this example.
+fields within the md:modalForm tag as you will see in this example.
 
 [testRemoteForm.gsp](https://github.com/vahidhedayati/grails-modaldx-test/blob/master/grails-app/views/testdynamix/testRemoteForm.gsp)
 
@@ -468,7 +486,7 @@ This should be good for all sorts of form actions including ckeditor items withi
  please refer to iframe example for this feature.
  
 ```gsp
-<g:genModalButton
+<md:genModalButton
 id="ModalDynamixSPECIALFORM"
 divId="MyDiv1"
 style='btn btn-danger'
@@ -490,7 +508,7 @@ value="Generate New MyUser?"
 	
 </g:form>
 ```
-##### g:genModalButton 
+##### md:genModalButton 
 loads up a button that triggers modalbox
 ```
 ID -> must match the ID of the id set further within the DIVS templates
@@ -503,7 +521,7 @@ style -> css style you wish to set the button - above exmaples use bootstrap btn
 
 	
 #### MyDiv1
-Main DIV wrapping the call  'MyDiv1'  [ the name must match divId label in g:genModalButton call] 
+Main DIV wrapping the call  'MyDiv1'  [ the name must match divId label in md:genModalButton call] 
 This now calls a template within my example project the project which is making the call, this is the taglib call back to this plugin but needs to be in a template.
 The reason is that the plugin later on calls this page to store its content for reuse of same button calls.
 
@@ -511,7 +529,7 @@ The reason is that the plugin later on calls this page to store its content for 
 
 So lets take a look inside this file what is going on here?
 ```gsp
-<g:modalForm
+<md:modalForm
   id="ModalDynamixSPECIALFORM"
   formId="MyRemoteForma"
   title="My Modal Title"
@@ -529,7 +547,7 @@ So lets take a look inside this file what is going on here?
   />
 ```
 
-#### g:modalForm
+#### md:modalForm
 refer to the [basic page in assets test of this site](https://github.com/vahidhedayati/testmodaldynamix/blob/master/grails-app/views/testdynamix/testBasicForm.gsp). This has customg css styling defined inside it.
 
 
@@ -655,7 +673,7 @@ When the user clicks close on top/bottom of the modal box, closeModal java scrip
 This should be good for all sorts of form actions including ckeditor items within pop up form. It will not be good for FILE UPLOADS -
  please refer to iframe example for this feature.
 ```gsp 
-<g:genModalButton 
+<md:genModalButton 
 id="ModalDynamixSPECIALFORM"
 divId="MyIframeDiv1"
 title="Create New MyUser"
@@ -676,7 +694,7 @@ value="Generate New MyUser Remote Form Example?"
 </g:form>
 ```   
 
-##### g:genModalButton 
+##### md:genModalButton 
 loads up a button that triggers modalbox
 ```
 ID -> must match the ID of the id set further within the DIVS templates
@@ -688,7 +706,7 @@ value -> display text in the button
 
 	
 #### MyIframeDiv1
-Main DIV wrapping the call  'MyIframeDiv1'  [ the name must match divId label in g:genModalButton call] 
+Main DIV wrapping the call  'MyIframeDiv1'  [ the name must match divId label in md:genModalButton call] 
 This now calls a template within my example project the project which is making the call, this is the taglib call back to this plugin but needs to be in a template.
 The reason is that the plugin later on calls this page to store its content for reuse of same button calls.
 
@@ -696,7 +714,7 @@ The reason is that the plugin later on calls this page to store its content for 
 
 So lets take a look inside this file what is going on here?
 ```gsp
-	<g:modalForm
+	<md:modalForm
  id="ModalDynamixSPECIALFORM"
  formId="MyRemoteForma"
  title="My Modal Title"
@@ -722,7 +740,7 @@ So lets take a look inside this file what is going on here?
  	/>
 ```
 
-#### g:modalForm
+#### md:modalForm
 ```
 id -> must match the ID of the id set further within the DIVS templates
 

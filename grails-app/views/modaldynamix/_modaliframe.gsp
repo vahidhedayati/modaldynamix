@@ -15,7 +15,7 @@
 
 			<div class="modal-body">
 				<iframe
-					style="zoom=${attrs.iframezoom };width: ${attrs.iframewidth }; height: ${attrs.iframeheight }; margin:${attrs.iframemargin }; padding:${attrs.iframepadding };"
+                    style="zoom=${attrs.iframezoom };width: ${attrs.iframewidth }; height: ${attrs.iframeheight }; margin:${attrs.iframemargin }; padding:${attrs.iframepadding };"
 					frameborder="0" scrolling="auto"
 					allowtransparency="${attrs.iframetransparency }" src="${attrs.url}"></iframe>
 			</div>

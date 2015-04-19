@@ -1,9 +1,13 @@
 package modaldynamix
 
+import org.grails.plugins.web.taglib.ApplicationTagLib
+import grails.core.GrailsApplication
 
 class ModalDynamixTagLib {
 
-	def grailsApplication
+	GrailsApplication grailsApplication
+
+    static namespace = "md"
 	
 	/*
 	 * This loads in customised bootstrap.css and default bootstrap.js
@@ -299,7 +303,7 @@ class ModalDynamixTagLib {
 		 */
 
 		attrs.modalJsTemplate='/modaldynamix/modal-js'
-		
+
 		
 		
 		/*
@@ -375,7 +379,7 @@ class ModalDynamixTagLib {
 		}
 
 		if (!attrs.url) {
-			def g = new org.codehaus.groovy.grails.plugins.web.taglib.ApplicationTagLib()
+            ApplicationTagLib g = new ApplicationTagLib()
 			attrs.url=g.createLink(controller: ''+attrs.iController+'', action: ''+attrs.iAction+'', params:attrs, ,  absolute: 'true')
 		}
 

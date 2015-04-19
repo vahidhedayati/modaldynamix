@@ -1,6 +1,9 @@
-class ModaldynamixGrailsPlugin {
-	def version = "0.13"
-	def grailsVersion = "2.0 > *"
+package modaldynamix
+
+import grails.plugins.*
+
+class ModaldynamixGrailsPlugin extends Plugin {
+	def grailsVersion = "3.0 > *"
  
 	def title = "ModalBox Dynamic Form Updater"
 	def description = 'Load various types of forms  Self Posting,I Frame, Remote Forms and normal calls via ModalBox, upon trigger save or close depending on type of call, the underlying form is updated with new values without page refreshes.'

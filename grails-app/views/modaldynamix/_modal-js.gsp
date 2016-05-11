@@ -16,14 +16,14 @@
 				CKEDITOR.remove(CKEDITOR.instances["${attrs.clearckeditor }"]); //Does the same as line below
 			}
 		</g:if>	
-  		$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain=&templateType=Form&fromPlugin='+fromPlugin+'&divId='+divId+'&returnController='+returnController,function(data){
+  		$.get('${g.createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain=&templateType=Form&fromPlugin='+fromPlugin+'&divId='+divId+'&returnController='+returnController,function(data){
 			$('#${attrs.divId}1').hide().append(data);
 		});
   		// If disablecheck not set to true - the trigger queryController which is by default modaldynamix
   		// This calls getAjaxCall which lists the domain provided and sends it back to your original view       
 		<g:if test="${!attrs.disablecheck.equals('true') }">
 			
-			$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain='+domain+'&fromPlugin='+fromPlugin+'&templateType=Display&divId='+divId+'&returnController='+returnController,function(data){
+			$.get('${g.createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain='+domain+'&fromPlugin='+fromPlugin+'&templateType=Display&divId='+divId+'&returnController='+returnController,function(data){
 				$('#${attrs.divId}').hide().html(data).fadeIn('slow');
 			});
 		</g:if>	

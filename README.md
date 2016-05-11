@@ -1,4 +1,4 @@
-modaldynamix 1
+modaldynamix 
 =======================
 
 
@@ -19,7 +19,7 @@ Grails 2.X:
 ```
 Grails 3.X:
 ```groovy
-	compile "org.grails.plugins:modaldynamix:1.0.2"
+	compile "org.grails.plugins:modaldynamix:1.0.3"
 ```
 
 

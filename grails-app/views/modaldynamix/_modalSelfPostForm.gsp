@@ -14,7 +14,7 @@
 			<div class="modal-body">
 				<div class="form-group">
 					<g:if test="${attrs.fromPlugin }">
-						<g:loadATemplate fromPlugin="${attrs.fromPlugin }"
+						<md:loadATemplate fromPlugin="${attrs.fromPlugin }"
 							template="${attrs.modalTemplatePage }" />
 					</g:if>
 					<g:else>
@@ -71,7 +71,7 @@
 		
 		
 		var returnController="${attrs.returnController }";	
-  		$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain=&templateType=Form&fromPlugin='+fromPlugin+'&divId='+divId+'&returnController='+returnController,function(data){
+  		$.get('${g.createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain=&templateType=Form&fromPlugin='+fromPlugin+'&divId='+divId+'&returnController='+returnController,function(data){
 			$('#${attrs.divId}1').hide().append(data);
 		});
   		
@@ -85,7 +85,7 @@
   		// This calls getAjaxCall which lists the domain provided and sends it back to your original view       
 		<g:if test="${!attrs.disablecheck.equals('true') }">
 
-			$.get('${createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain='+domain+'&fromPlugin='+fromPlugin+'&templateType=Display&divId='+divId+'&returnController='+returnController,function(data){
+			$.get('${g.createLink(controller:"${attrs.queryController}", action: "${attrs.queryAction}")}?domain='+domain+'&fromPlugin='+fromPlugin+'&templateType=Display&divId='+divId+'&returnController='+returnController,function(data){
 				$('#${attrs.divId}').hide().html(data).fadeIn('slow');
 			});
 		</g:if>	

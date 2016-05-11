@@ -379,7 +379,6 @@ class ModalDynamixTagLib {
 		}
 
 		if (!attrs.url) {
-            ApplicationTagLib g = new ApplicationTagLib()
 			attrs.url=g.createLink(controller: ''+attrs.iController+'', action: ''+attrs.iAction+'', params:attrs, ,  absolute: 'true')
 		}
 

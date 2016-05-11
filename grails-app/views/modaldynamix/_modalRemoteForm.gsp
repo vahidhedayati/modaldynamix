@@ -23,7 +23,7 @@
 				
 					<div class="form-group">
 						<g:if test="${attrs.fromPlugin}">
-							<g:loadATemplate fromPlugin="${attrs.fromPlugin}"
+							<md:loadATemplate fromPlugin="${attrs.fromPlugin}"
 								template="${attrs.modalTemplatePage}"
 								model="[attrs:attrs, params:params, definedParams:definedParams]" />
 						</g:if>
